@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            shrink-to-fit=no" />
+    <title>Editor</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&amp;display=swap" />
+    <link rel="stylesheet" href="assets/fonts/material-icons.min.css" />
+    <link rel="stylesheet" href="assets/css/Button-Icon-Round.css" />
+    <link rel="stylesheet" href="assets/css/custom-buttons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/pa-icon-bar.css" />
+
+    <!-- external styles and scripts -->
+    <link rel="stylesheet" href="./css/base.css" type="text/css" />
+    <link rel="stylesheet" href="./css/canvas.css" type="text/css" />
+    <link rel="stylesheet" href="./css/toolbar.css" type="text/css" />
+    <link rel="stylesheet" href="./css/stylebar.css" type="text/css" />
+    <link rel="stylesheet" href="./css/shapebar.css" type="text/css" />
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+    <link rel="stylesheet" href="./css/view.css" type="text/css" />
+    <link rel="stylesheet" href="./css/animation.css" type="text/css" />
+    <link rel="stylesheet" href="./css/preview.css" type="text/css" />
+    <link rel="stylesheet" href="./css/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="./css/cm.theme.css" type="text/css" />
+    <link rel="stylesheet" href="./css/introjs.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="./web.fs.mobile/src/theme/ui.css" />
+    <link rel="stylesheet" type="text/css" href="./web.fs.mobile/src/sui/sui.css" />
+    <script type="text/javascript" src="./web.fs.mobile/src/lib/underscore.js"></script>
+    <script type="text/javascript" src="./web.fs.mobile/src/lib/zepto.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.0.279/pdf.min.js"></script>
+    <script type="text/javascript" src="./js/lib/codemirror/codemirror.js"></script>
+    <script type="text/javascript" src="./js/lib/codemirror/cm.theme.js"></script>
+    <script type="text/javascript" src="./js/lib/bowser/bowser.js"></script>
+    <script type="text/javascript" src="./js/lib/paintBoard/drawJS.js"></script>
+    <script type="text/javascript" src="./js/common/config.js"></script>
+    <script type="text/javascript" src="./js/util/json.js"></script>
+    <script type="text/javascript" src="./js/util/colorboard.js"></script>
+    <script type="text/javascript" src="./js/util/screenboard.js"></script>
+    <script type="text/javascript" src="./js/util/chooseBox.js"></script>
+    <script type="text/javascript" src="./js/util/imageselector.js"></script>
+    <script type="text/javascript" src="./js/util/util.js"></script>
+    <script type="text/javascript" src="./js/util/altbox.js"></script>
+    <script type="text/javascript" src="./js/util/render.js"></script>
+    <script type="text/javascript" src="./js/core.js"></script>
+    <script type="text/javascript" src="./js/sandbox.js"></script>
+    <script type="text/javascript" src="./js/intro.js"></script>
+    <!-- end of styles and scripts -->
+
+    <!-- inline temp css  -->
+    <style type="text/css">
+        .nav-bar {
+            height: 45px;
+            background-color: black;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+        }
+
+
+        .badge{
+            display: none!important;
+            visibility: hidden!important;
+        }
+
+
+
+        .nav-button {
+            height: 100%;
+            width: 80px;
+            border: none;
+            background-image: url(./img/go-home.png);
+            background-position: center;
+            background-size: 40px 40px;
+            background-repeat: no-repeat;
+            background-color: transparent;
+        }
+    </style>
+    <!-- end of inline temp css  -->
+</head>
+
+<body style="background: white">
+    <header>
+        <nav class="navbar navbar-light navbar-expand bg-light
+                navigation-clean">
+            <div class="container">
+                <a style="padding: right 50px ;" class="navbar-brand" href="#">Digital Textbook Web Authoring Tool</a>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <a class="btn btn-primary btn-sm border rounded-pill
+                            ms-auto" role="button" href="#">Log<span>
+                        </span>Out</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Toolbar Start -->
+
+    <div class="container">
+        <div id="toolbar" data-intro="operation tool bar" data-step="1" style="position: relative">
+            <div id="tool-buttons">
+                <!-- <div id="tool-enterPreviewMode" class="tool-app" data-title="toolBar_save"></div>
+                <div id="tool-addslider" class="tool-app" data-title="添加新的幻灯片" data-intro='添加新的幻灯片' data-step='6'></div>
+                <div id="tool-import" class="tool-app" data-title="toolBar_import">
+                    <input type="file" id="importInp" />
+                </div>
+                <div id="tool-openFileSystem" class="tool-app" data-title="toolBar_openFileSystem"></div>
+                <div id="tool-play" class="tool-app" data-title="toolBar_preview"></div>
+                <div id="tool-mapEditing" class="tool-app" data-title="toolBar_mapEditing"></div>
+                <div id="tool-addAnimation" class="tool-app ondetail" data-title="toolBar_setAnimation"></div>
+                <div id="tool-addVideo" class="tool-app" data-title="toolBar_addVideo">
+                    <input type="file" id="addVideoInp"/>
+                </div>
+                <div id="tool-addimage" class="tool-app" data-title="toolBar_addImage">
+                    <input type="file" id="addImageInp" />
+                </div>
+                <div id="tool-addtext" class="tool-app" data-title="toolBar_addText"></div>
+                <div id="tool-addCode" class="tool-app" data-title="toolBar_addCode"></div>
+
+                    <div id="tool-insertSlider" class="tool-app" data-title="往当前位置插入新的幻灯片" data-intro='往当前位置插入新的幻灯片' data-step='15'></div>
+                <div id="tool-screen" class="tool-app" data-title="toolBar_changeScale"></div>
+                <div class="tool-app show_execCommandDetail" data-title="打开文本编辑工具" data-intro='打开文本编辑工具' data-step='12'></div>
+
+
+                    <div id="tool-deleteSlider" class="tool-app" data-title="删除当前幻灯片" data-intro='删除当前幻灯片' data-step='16'></div>
+
+                <div id="tool-help" class="tool-app" data-title="toolBar_help"></div> -->
+            </div>
+            <div></div>
+
+            <!-- default container end -->
+
+            <!-- Toolbar End -->
+
+            <!-- <hr /> -->
+            <nav class="navbar navbar-light navbar-expand navigation-clean">
+                <div class="container">
+                    <div class="collapse navbar-collapse text-center d-flex
+                            justify-content-center">
+                        <div style="
+                                background-color: transparent;
+                                border: none;
+                                background: transparent;
+                                padding-top: 0px;" 
+                                id="shapebar" class="mail-custom-btn" data-intro="Shapes lib bar" data-step="3">
+
+
+<!-- 
+                            <a class="d-print-inline-block d-sm-inline d-md-inline d-lg-inline-block d-xl-inline-block d-xxl-inline-block custom-btn light-btn"
+                                href="https://pdf-editor-1fvz92u5k-kaleemahmad.vercel.app/" title="Import and Edit PDF as Images" role="button" style="height: 35px;font-size: 12px;"><i
+                                    class="material-icons">picture_as_pdf</i>Edit&nbsp;PDF</a> -->
+
+
+
+
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="height: 35px; font-size: 12px">
+                                <div id="tool-openFileSystem" class="tool-app" data-title="toolBar_openFileSystem"
+                                    style="
+                                        background-image: none;
+                                        position: absolute;
+                                        margin-left: -4px;
+                                        height: 50px;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        position: absolute;
+                                        margin-top: -10px;
+                                        border: none;
+                                        "></div>
+
+                                <i class="material-icons">filter_drama</i>File&nbsp;Mgr
+                            </a>
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="height: 35px; font-size: 12px">
+                                <!-- files toolbar Dropdown Start -->
+                                <!--
+
+                        <style>
+                            .dropbtn {
+                                position: absolute;
+                                background: transparent;
+                                font-size: 16px;
+                            }
+
+                            .dropdown {
+                                position: absolute;
+                                height: 10px;
+                                width: 10px;
+                                border: 2px black;
+                                display: inline-block;
+                            }
+
+                            .dropdown-content {
+                                display: none;
+                                position: absolute;
+                                background-color: #f1f1f1;
+                                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                                z-index: 1;
+                            }
+
+                            .dropdown-content div {
+                              color: black;
+                              padding: 12px 16px;
+                              text-decoration: none;
+                              display: block;
+                            }
+
+                            .dropdown-content div:hover {
+                                background-color: #ddd;
+                            }
+
+                            .dropdown:hover .dropdown-content {
+                                display: flex;
+                            }
+
+                            .dropdown:hover .dropbtn {
+                                background-color: transparent;
+                            }
+                        </style>
+
+                        <div style="position: absolute;" class="dropdown"
+                        id="toolbar" data-intro="operation tool bar" data-step="1" data-position="right">
+                            <button class="dropbtn">DDO</button>
+                            <div class="dropdown-content" id="tool-buttons">
+                                <div id="tool-openFileSystem" class="tool-app" data-title="toolBar_openFileSystem"></div>
+                            </div>
+                        </div> -->
+                                <!--file toolbar dropdown end -->
+
+
+
+
+                                <div id="tool-import" class="tool-app" data-title="toolBar_import" style="
+                                        background-image: none;
+                                        position: absolute;
+                                        margin-left: -4px;
+                                        height: 50px;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        position: absolute;
+                                        margin-top: -10px;
+                                        border: none;
+                                        ">
+                                    <input type="file" id="importInp" />
+                                </div>
+
+                                <i class="material-icons">insert_drive_file</i>Open&nbsp;File
+                                <a class="d-print-inline-block d-sm-inline
+                                        d-md-inline d-lg-inline-block
+                                        d-xl-inline-block d-xxl-inline-block
+                                        custom-btn light-btn" href="#" role="button"
+                                    style="height: 35px; font-size: 12px">
+
+
+
+
+
+                                <div id="tool-enterPreviewMode" class="tool-app" data-title="toolBar_save" style="
+                                            background-image: none;
+                                            position: absolute;
+                                            margin-left: -4px;
+                                            height: 50px;
+                                            background: transparent;
+                                            box-shadow: none;
+                                            position: absolute;
+                                            margin-top: -10px;
+                                            border: none;
+                                            "></div>
+
+                                <i class="material-icons">save</i>Save&nbsp;File
+                            </a>
+                            </a>
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px">
+                                <div id="tool-addtext" class="tool-app" data-title="toolBar_addText" style="
+                                        background-image: none;
+                                        position: absolute;
+                                        margin-left: -4px;
+                                        height: 50px;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        position: absolute;
+                                        margin-top: -10px;
+                                        border: none;
+                                        ">
+                                </div>
+                                <i class="material-icons" style="
+                                        margin-left: -3px;
+                                        padding-bottom: 0px;
+                                        margin-bottom: -10px;
+                                        position: relative;
+                                        ">format_shapes</i>Text
+                            </a>
+
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button"
+                                style="height: 35px; font-size: 12px"><i class="material-icons">
+                                    <div id="tool-addCode" class="tool-app" data-title="toolBar_addCode" style="
+                                            background-image: none;
+                                            position: absolute;
+                                            margin-left: -4px;
+                                            height: 50px;
+                                            background: transparent;
+                                            box-shadow: none;
+                                            position: absolute;
+                                            margin-top: -10px;
+                                            border: none;
+                                            "></div>
+
+                                    code
+                                </i>Add&nbsp;Code</a>
+
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px">
+                                <div id="customShape" style="
+                                        background-image: none;
+                                        position: absolute;
+                                        margin-top: -10px;
+                                        margin-left: -4px;
+                                        height: 50px;
+                                        border: none;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        " class="shape-icon" data-type="custom" data-title="shape_doodle"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                                    fill="none" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.2635 2.29289C20.873 1.90237
+                                            20.2398
+                                            1.90237 19.8493 2.29289L18.9769
+                                            3.16525C17.8618 2.63254 16.4857
+                                            2.82801
+                                            15.5621 3.75165L4.95549
+                                            14.3582L10.6123
+                                            20.0151L21.2189 9.4085C22.1426
+                                            8.48486
+                                            22.338 7.1088 21.8053
+                                            5.99367L22.6777
+                                            5.12132C23.0682 4.7308 23.0682
+                                            4.09763
+                                            22.6777 3.70711L21.2635
+                                            2.29289ZM16.9955
+                                            10.8035L10.6123 17.1867L7.78392
+                                            14.3582L14.1671 7.9751L16.9955
+                                            10.8035ZM18.8138 8.98525L19.8047
+                                            7.99429C20.1953 7.60376 20.1953
+                                            6.9706
+                                            19.8047 6.58007L18.3905 5.16586C18
+                                            4.77534
+                                            17.3668 4.77534 16.9763
+                                            5.16586L15.9853
+                                            6.15683L18.8138 8.98525Z" fill="currentColor"></path>
+                                    <path d="M2 22.9502L4.12171
+                                            15.1717L9.77817
+                                            20.8289L2 22.9502Z" fill="currentColor"></path>
+                                </svg>Draw
+                            </a>
+
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px">
+                                <!-- <div id="triangle"
+                            style="background-image: none; position: absolute; margin-top: -10px; margin-left: -4px; height: 50px; border: none; background: transparent; box-shadow: none;"
+                            class="shape-icon" data-type="triangle" data-title="shape_triangle">
+                        </div> -->
+                                <!-- Shapebar Dropdown Start -->
+
+                                <style>
+                                    .dropbtn {
+                                        background-color: transparent;
+                                        color: transparent;
+                                        /* padding: 16px; */
+
+                                        font-size: 16px;
+                                        border: none;
+                                    }
+
+                                    .dd {
+                                        position: absolute;
+                                        /* display: inline-block; */
+                                    }
+
+                                    .dd-content {
+                                        display: none;
+                                        position: absolute;
+                                        background-color: #f1f1f1;
+                                        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                                        z-index: 1;
+                                    }
+
+                                    /* .dropdown-content a {
+                              color: black;
+                              padding: 12px 16px;
+                              text-decoration: none;
+                              display: block;
+                            } */
+
+                                    .dd-content a:hover {
+                                        background-color: #ddd;
+                                    }
+
+                                    .dd:hover .dd-content {
+                                        display: flex;
+                                    }
+
+                                    .dd:hover .dropbtn {
+                                        background-color: transparent;
+                                    }
+                                </style>
+                                <div style="position: absolute" class="dd">
+                                    <button class="dropbtn">DDO</button>
+                                    <div class="dd-content">
+                                        <!-- <div id="triangle"
+                            class="shape-icon" data-type="triangle" data-title="shape_triangle"></div>
+                            <div id="circular"
+                            class="shape-icon" data-type="circular" data-title="shape_circular"></div>
+                            <div id="rectangle"
+                            class="shape-icon" data-type="rectangle" data-title="shape_rectangle"></div> -->
+                                        <div id="rectangle_stroke" class="shape-icon" data-type="rectangle_stroke"
+                                            data-title="shape_rectangle_stroke"></div>
+                                        <div id="rectangle" class="shape-icon" data-type="rectangle"
+                                            data-title="shape_rectangle"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Shapebar dropdown end -->
+
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0
+                                        512 512" width="1em" height="1em" fill="currentColor" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+                                    <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                                    <path d="M411.4 175.5C417.4 185.4 417.5
+                                            197.7
+                                            411.8 207.8C406.2 217.8 395.5 223.1
+                                            384
+                                            223.1H192C180.5 223.1 169.8 217.8
+                                            164.2
+                                            207.8C158.5 197.7 158.6 185.4 164.6
+                                            175.5L260.6 15.54C266.3 5.897 276.8
+                                            0 288
+                                            0C299.2 0 309.7 5.898 315.4
+                                            15.54L411.4
+                                            175.5zM288 312C288 289.9 305.9 272
+                                            328
+                                            272H472C494.1 272 512 289.9 512
+                                            312V456C512
+                                            478.1 494.1 496 472 496H328C305.9
+                                            496 288
+                                            478.1 288 456V312zM0 384C0 313.3
+                                            57.31 256
+                                            128 256C198.7 256 256 313.3 256
+                                            384C256
+                                            454.7 198.7 512 128 512C57.31 512 0
+                                            454.7 0
+                                            384z"></path>
+                                </svg>Shape
+                            </a>
+
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px">
+                                <div id="tool-addimage" class="tool-app" data-title="toolBar_addImage" style="
+                                        background-image: none;
+                                        position: absolute;
+                                        margin-left: -4px;
+                                        height: 50px;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        position: absolute;
+                                        margin-top: -10px;
+                                        border: none;
+                                        ">
+                                    <input type="file" id="addImageInp" />
+                                </div>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0
+                                        -32 576 576" width="1em" height="1em" fill="currentColor" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+                                    <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                                    <path d="M512 32H160c-35.35 0-64 28.65-64
+                                            64v224c0 35.35 28.65 64 64
+                                            64H512c35.35 0
+                                            64-28.65 64-64V96C576 60.65 547.3 32
+                                            512
+                                            32zM528 320c0 8.822-7.178 16-16
+                                            16h-16l-109.3-160.9C383.7 170.7
+                                            378.7 168
+                                            373.3 168c-5.352 0-10.35 2.672-13.31
+                                            7.125l-62.74 94.11L274.9 238.6C271.9
+                                            234.4
+                                            267.1 232 262 232c-5.109 0-9.914
+                                            2.441-12.93
+                                            6.574L176 336H160c-8.822
+                                            0-16-7.178-16-16V96c0-8.822 7.178-16
+                                            16-16H512c8.822 0 16 7.178 16
+                                            16V320zM224
+                                            112c-17.67 0-32 14.33-32 32s14.33 32
+                                            32
+                                            32c17.68 0 32-14.33 32-32S241.7 112
+                                            224
+                                            112zM456 480H120C53.83 480 0 426.2 0
+                                            360v-240C0 106.8 10.75 96 24 96S48
+                                            106.8 48
+                                            120v240c0 39.7 32.3 72 72
+                                            72h336c13.25 0 24
+                                            10.75 24 24S469.3 480 456 480z"></path>
+                                </svg>Image
+                            </a>
+
+                            <a class="d-print-inline-block d-sm-inline d-md-inline d-lg-inline-block d-xl-inline-block d-xxl-inline-block custom-btn light-btn"
+                                href="#" role="button" style="width: 60px;height: 34px;font-size: 12px;">
+
+                                <div id="tool-addVideo" class="tool-app" data-title="toolBar_addVideo" style="
+                                        background-image: none;
+                                        position: absolute;
+                                        margin-left: -4px;
+                                        height: 50px;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        position: absolute;
+                                        margin-top: -10px;
+                                        border: none;
+                                        ">
+                                    <input type="file" id="addVideoInp" />
+                                </div>
+
+                                <i class="material-icons"
+                                    style="font-size: 24px;width: 24px;height: 24px;margin-bottom: 5px;">attachment</i>Add&nbsp;Media
+                            </a>
+
+                            <!-- <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-64
+                                        0 512 512" width="1em" height="1em" fill="currentColor" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+
+                                    <path d="M365.3 93.38l-74.63-74.64C278.6
+                                            6.742
+                                            262.3 0 245.4 0L64-.0001c-35.35 0-64
+                                            28.65-64 64l.0065 384c0 35.34 28.65
+                                            64 64
+                                            64H320c35.2 0 64-28.8
+                                            64-64V138.6C384 121.7
+                                            377.3 105.4 365.3 93.38zM336 448c0
+                                            8.836-7.164 16-16 16H64.02c-8.838
+                                            0-16-7.164-16-16L48 64.13c0-8.836
+                                            7.164-16
+                                            16-16h160L224 128c0 17.67 14.33 32
+                                            32
+                                            32h79.1V448zM171.5 259.5L136
+                                            296H92C85.38
+                                            296 80 301.4 80 308v56C80 370.7
+                                            85.38 376 92
+                                            376H136l35.5 36.5C179.1 420 192
+                                            414.8 192
+                                            404v-136C192 257.3 179.1 251.9 171.5
+                                            259.5zM235.1 260.7c-6.25 6.25-6.25
+                                            16.38 0
+                                            22.62C235.3 283.5 256 305.1 256
+                                            336c0
+                                            30.94-20.77 52.53-20.91 52.69c-6.25
+                                            6.25-6.25 16.38 0 22.62C238.2 414.4
+                                            242.3
+                                            416 246.4 416s8.188-1.562
+                                            11.31-4.688C258.1
+                                            410.1 288 380.5 288
+                                            336s-29.05-74.06-30.28-75.31C251.5
+                                            254.4
+                                            241.3 254.4 235.1 260.7z"></path>
+                                </svg>Audio</a> -->
+
+
+                            <!-- <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0
+                                        -64 640 640" width="1em" height="1em" fill="currentColor" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+                                    <path d="M172.5 131.1C228.1 75.51 320.5
+                                            75.51
+                                            376.1 131.1C426.1 181.1 433.5 260.8
+                                            392.4
+                                            318.3L391.3 319.9C381 334.2 361
+                                            337.6 346.7
+                                            327.3C332.3 317 328.9 297 339.2
+                                            282.7L340.3
+                                            281.1C363.2 249 359.6 205.1 331.7
+                                            177.2C300.3 145.8 249.2 145.8 217.7
+                                            177.2L105.5 289.5C73.99 320.1 73.99
+                                            372
+                                            105.5 403.5C133.3 431.4 177.3 435
+                                            209.3
+                                            412.1L210.9 410.1C225.3 400.7 245.3
+                                            404
+                                            255.5 418.4C265.8 432.8 262.5 452.8
+                                            248.1
+                                            463.1L246.5 464.2C188.1 505.3 110.2
+                                            498.7
+                                            60.21 448.8C3.741 392.3 3.741 300.7
+                                            60.21
+                                            244.3L172.5 131.1zM467.5 380C411
+                                            436.5 319.5
+                                            436.5 263 380C213 330 206.5 251.2
+                                            247.6
+                                            193.7L248.7 192.1C258.1 177.8 278.1
+                                            174.4
+                                            293.3 184.7C307.7 194.1 311.1 214.1
+                                            300.8
+                                            229.3L299.7 230.9C276.8 262.1 280.4
+                                            306.9
+                                            308.3 334.8C339.7 366.2 390.8 366.2
+                                            422.3
+                                            334.8L534.5 222.5C566 191 566 139.1
+                                            534.5
+                                            108.5C506.7 80.63 462.7 76.99 430.7
+                                            99.9L429.1 101C414.7 111.3 394.7
+                                            107.1 384.5
+                                            93.58C374.2 79.2 377.5 59.21 391.9
+                                            48.94L393.5 47.82C451 6.731 529.8
+                                            13.25
+                                            579.8 63.24C636.3 119.7 636.3 211.3
+                                            579.8
+                                            267.7L467.5 380z"></path>
+                                </svg>Link</a> -->
+
+
+                            <!-- <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-64
+                                        0 512 512" width="1em" height="1em" fill="currentColor" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+
+                                    <path d="M192 352c53.03 0 96-42.97
+                                            96-96v-160c0-53.03-42.97-96-96-96s-96
+                                            42.97-96 96v160C96 309 138.1 352 192
+                                            352zM344 192C330.7 192 320 202.7 320
+                                            215.1V256c0 73.33-61.97 132.4-136.3
+                                            127.7c-66.08-4.169-119.7-66.59-119.7-132.8L64
+                                            215.1C64 202.7 53.25 192 40 192S16
+                                            202.7 16
+                                            215.1v32.15c0 89.66 63.97 169.6 152
+                                            181.7V464H128c-18.19 0-32.84
+                                            15.18-31.96
+                                            33.57C96.43 505.8 103.8 512 112
+                                            512h160c8.222 0 15.57-6.216
+                                            15.96-14.43C288.8 479.2 274.2 464
+                                            256
+                                            464h-40v-33.77C301.7 418.5 368 344.9
+                                            368
+                                            256V215.1C368 202.7 357.3 192 344
+                                            192z"></path>
+                                </svg>Record</a> -->
+
+                            <!-- <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                    fill="currentColor" viewBox="0 0 16
+                                        16" class="bi bi-input-cursor" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+                                    <path d="M10 5h4a1 1 0 0 1 1 1v4a1 1 0 0
+                                            1-1
+                                            1h-4v1h4a2 2 0 0 0 2-2V6a2 2 0 0
+                                            0-2-2h-4v1zM6 5V4H2a2 2 0 0 0-2
+                                            2v4a2 2 0 0
+                                            0 2 2h4v-1H2a1 1 0 0 1-1-1V6a1 1 0 0
+                                            1
+                                            1-1h4z"></path>
+                                    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1
+                                            .5.5v13a.5.5 0 0 1-1 0v-13A.5.5 0 0
+                                            1 8 1z"></path>
+                                </svg>Input</a> -->
+
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px">
+                                <div id="tool-screen" class="tool-app" data-title="toolBar_changeScale" style="
+                                        background-image: none;
+                                        position: absolute;
+                                        margin-left: -4px;
+                                        height: 50px;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        position: absolute;
+                                        margin-top: -10px;
+                                        border: none;
+                                        "></div>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                    viewBox="0 0 16
+                                        16" class="bi bi-zoom-in" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+                                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1
+                                            0 0-11 5.5 5.5 0 0 0 0 11zM13
+                                            6.5a6.5 6.5 0
+                                            1 1-13 0 6.5 6.5 0 0 1 13 0z"></path>
+                                    <path d="M10.344
+                                            11.742c.03.04.062.078.098.115l3.85
+                                            3.85a1 1
+                                            0 0 0 1.415-1.414l-3.85-3.85a1.007
+                                            1.007 0 0
+                                            0-.115-.1 6.538 6.538 0 0 1-1.398
+                                            1.4z"></path>
+                                    <path fill-rule="evenodd" d="M6.5 3a.5.5 0 0 1
+                                            .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5
+                                            0 0 1-1
+                                            0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0
+                                            0 1
+                                            .5-.5z"></path>
+                                </svg><i class="material-icons
+                                        d-print-inline-block d-sm-inline
+                                        d-md-inline d-lg-inline-block
+                                        d-xl-inline-block d-xxl-inline-block" id="view-dropdown"
+                                    style="font-size: 17px">arrow_drop_down</i>Slide&nbsp;Size
+                            </a>
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    12px">
+                                <div style="position: absolute" id="tool-buttons">
+                                    <div id="tool-play" class="tool-app" data-title="toolBar_preview" style="
+                                            background-image: none;
+                                            position: absolute;
+                                            margin-left: -4px;
+                                            height: 50px;
+                                            background: transparent;
+                                            box-shadow: none;
+                                            position: absolute;
+                                            margin-top: -10px;
+                                            border: none;
+                                            "></div>
+                                </div>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                    viewBox="0 0 16
+                                        16" class="bi bi-file-play" style="
+                                        font-size: 35px;
+                                        width: 24px;
+                                        height: 24px;
+                                        margin-bottom: 5px;
+                                        ">
+                                    <path d="M6 10.117V5.883a.5.5 0 0 1
+                                            .757-.429l3.528 2.117a.5.5 0 0 1 0
+                                            .858l-3.528 2.117a.5.5 0 0
+                                            1-.757-.43z"></path>
+                                    <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2
+                                            2h8a2
+                                            2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0
+                                            1h8a1 1 0 0
+                                            1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0
+                                            1-1-1V2a1 1
+                                            0 0 1 1-1z"></path>
+                                </svg>Preview
+                            </a>
+                            <a class="d-print-inline-block d-sm-inline
+                                    d-md-inline d-lg-inline-block
+                                    d-xl-inline-block d-xxl-inline-block
+                                    custom-btn light-btn" href="#" role="button" style="height: 35px; font-size: 12px">
+                                <div id="tool-addAnimation" class="tool-app ondetail" data-title="toolBar_setAnimation"
+                                    style="
+                                        background-image: none;
+                                        position: absolute;
+                                        margin-left: -4px;
+                                        height: 50px;
+                                        background: transparent;
+                                        box-shadow: none;
+                                        position: absolute;
+                                        margin-top: -10px;
+                                        border: none;
+                                        "></div>
+
+                                <i class="material-icons">compare</i>Transition
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <hr />
+        </div>
+
+        <!-- Editor Start -->
+        <div id="previewContainer" class="panel1 dp-none op-full">
+            <div class="close-menu" data-title="btn_close"></div>
+        </div>
+        <div id="mapEditingContainer" class="panel1 dp-none op-full">
+            <div class="close-menu" data-title="btn_close"></div>
+            <div class="confirm-btn" title="Save edits"></div>
+            <div class="reset-btn" title="Reset edits"></div>
+            <div class="impressContainer"></div>
+        </div>
+
+        <div id="filesystem" class="sui-disp-none">
+            <!-- Navigation Bar -->
+            <div style="right: 0px;" id="fs_nav_bar" class="nav-bar">
+                <button data-feed="true" class="nav-button" id="returnHomeBtn"></button>
+            </div>
+            <!-- FIle System Container -->
+            <div style="right: 0px; left: 0px;" id="fileView" class="fs-view fs-theme-adobe"></div>
+            <!-- Bottom Menu Bar -->
+            <div id="fileBar" class="fs-bar">
+                <a id="addFolder" data-feed="true" class="fs-bar-btn" href="javascript:;"
+                    data-lang="fileSystem_newFolder">Create a Directory</a>
+                <a id="showDeleteIcon" data-feed="true" class="fs-bar-icon" href="javascript:;"></a>
+                <a id="addFile" data-feed="true" class="fs-bar-btn" href="javascript:;"
+                    data-lang="fileSystem_saveAs">Save As</a>
+            </div>
+
+
+            <!-- Add Folder PopBox -->
+            <div class="sui-popbox sui-disp-none" data-vertical="center" data-position="fixed" data-transition="true"
+                data-cancel="true" id="folderInpBox">
+                <div class="sui-popbox-mask sui-popbox-mask-slight"></div>
+                <div class="sui-popbox-box sui-popbox-white">
+                    <div class="sui-popbox-content">
+                        <div class="sui-inp-box sui-mg-top">
+                            <input class="sui-inp" type="text" id="folderInp" placeholder="Please input folder name" />
+                        </div>
+                        <input class="sui-btn sui-w-full sui-mg-top
+                                    sui-btn-primary" id="folderInpBtn" type="button" value="OK" />
+                    </div>
+                </div>
+            </div>
+            <!-- Add File PopBox -->
+            <div class="sui-popbox sui-disp-none" data-noscroll="true" data-vertical="center" data-position="fixed"
+                data-transition="true" data-cancel="true" id="fileInpBox">
+                <div class="sui-popbox-mask sui-popbox-mask-slight"></div>
+                <div class="sui-popbox-box sui-popbox-white">
+                    <div class="sui-popbox-content">
+                        <div class="sui-inp-group sui-mg-top">
+                            <div class="sui-inp-box">
+                                <input class="sui-inp" type="text" id="fileNameInp"
+                                    placeholder="Please input file name" />
+                            </div>
+                            <!--                                 <div class="sui-inp-box">
+                                    <input class="sui-inp" type="text" id="fileSufInp" placeholder="输入文件类型" />
+                                </div> -->
+                        </div>
+                        <input class="sui-btn sui-w-full sui-mg-top
+                                    sui-btn-primary" id="fileInpBtn" type="button" value="OK" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Global Notify PopBox -->
+        <!-- loader popup -->
+        <div class="sui-popbox sui-disp-none" data-vertical="center" data-position="fixed" data-transition="true"
+            data-cancel="true" id="notifyBox" style="z-index: 9999">
+            <div class="sui-popbox-mask sui-popbox-mask-transparent"></div>
+            <div class="sui-popbox-box sui-popbox-black sui-w-custom">
+                <div class="sui-popbox-content">
+                    <center id="notifyMsg" class="sui-mg-top"></center>
+                </div>
+            </div>
+        </div>
+        <div id="appContainer" class="dp-none">
+            <div class="containerHeader"></div>
+            <div class="containerBody flb-box">
+                <div id="setlink" class="panel1">
+                    <input type="text" name="link" value="http://" class="middle-input link-value box" />
+                    <input type="button" value="确定" class="comfirm-link
+                                box" />
+                </div>
+                <div class="colorSelector"></div>
+                <div class="colorSelector" id="colorSelector"></div>
+                <div id="execCommand-detail" class="panel1 dp-none">
+                    <!-- <div class="close-menu" data-title="btn_close"></div> -->
+                    <div class="flb-box">
+                        <div class="execCommand-item font-family">
+                            <select class="execC-but" onchange="if(this.value!=-1)
+                                        document.execCommand('fontName',false,this.value);this.value=-1;">
+                                <option value="-1" data-lang="textbar_fontFamily">
+                                    选择字体
+                                </option>
+                                <option value="宋体" data-lang="textbar_ff_song">
+                                    宋体
+                                </option>
+                                <option value="黑体" data-lang="textbar_ff_blackbody">
+                                    黑体
+                                </option>
+                                <option value="楷体_GB2312">楷体</option>
+                                <option value="仿宋_GB2312">仿宋</option>
+                                <option value="隶书">隶书</option>
+                                <option value="微软雅黑" data-lang="textbar_ff_yahei">
+                                    微软雅黑
+                                </option>
+                                <option value="幼圆">幼圆</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Open Sans">Open Sans</option>
+                                <option value="sans-serif">sans-serif</option>
+                            </select>
+                        </div>
+                        <div class="execCommand-item font-size">
+                            <select class="execC-but" onchange="if(this.value!=-1)
+                                        document.execCommand('fontSize',false,this.value);this.value=-1;">
+                                <option value="-1" data-lang="textbar_fontSize">
+                                    字体大小
+                                </option>
+                                <option value="1">1(10px)</option>
+                                <option value="2">2(12px)</option>
+                                <option value="3">3(14px)</option>
+                                <option value="4">4(16px)</option>
+                                <option value="5">5(18px)</option>
+                                <option value="6">6(24px)</option>
+                                <option value="7">7(36px)</option>
+                            </select>
+                        </div>
+                        <div class="execCommand-item font-color">
+                            <a href="javascript:;" class="execC-but"></a>
+                        </div>
+                        <div class="execCommand-item font-background">
+                            <a href="javascript:;" class="execC-but"></a>
+                        </div>
+                        <div class="execCommand-item font-formatblock">
+                            <select class="execC-but" onchange="if(this.value!=-1)
+                                        document.execCommand('formatBlock',false,this.value);this.value=-1;">
+                                <option value="-1" data-lang="textbar_paragraph">
+                                    段落
+                                </option>
+                                <option value="h1" data-langPre="textbar_title">1</option>
+                                <option value="h2" data-langPre="textbar_title">2</option>
+                                <option value="h3" data-langPre="textbar_title">3</option>
+                                <option value="h4" data-langPre="textbar_title">4</option>
+                                <option value="h5" data-langPre="textbar_title">5</option>
+                                <option value="h6" data-langPre="textbar_title">6</option>
+                                <option value="p" data-lang="textbar_text">正文</option>
+                                <option value="pre" data-lang="textbar_pre">pre</option>
+                            </select>
+                        </div>
+                        <div class="execCommand-item font-leftAlign">
+                            <a href="javascript:;" class="execC-but"
+                                onclick="document.execCommand('justifyLeft',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-centerAlign">
+                            <a href="javascript:;" class="execC-but"
+                                onclick="document.execCommand('justifyCenter',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-rightAlign">
+                            <a href="javascript:;" class="execC-but"
+                                onclick="document.execCommand('justifyRight',false);"></a>
+                        </div>
+                    </div>
+                    <div class="flb-box">
+                        <div class="execCommand-item font-italic" data-isFeed="true">
+                            <a href="javascript:;" class="execC-but"
+                                data-action="document.execCommand('italic',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-bold" data-isFeed="true">
+                            <a href="javascript:;" class="execC-but"
+                                data-action="document.execCommand('bold',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-underline" data-isFeed="true">
+                            <a href="javascript:;" class="execC-but"
+                                data-action="document.execCommand('underline',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-strike" data-isFeed="true">
+                            <a href="javascript:;" class="execC-but"
+                                data-action="document.execCommand('strikeThrough',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-eraser">
+                            <a href="javascript:;" class="execC-but"
+                                onclick="document.execCommand('removeFormat',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-link">
+                            <a href="javascript:;" class="execC-but"></a>
+                        </div>
+                        <div class="execCommand-item font-undo">
+                            <a href="javascript:;" class="execC-but" onclick="document.execCommand('undo',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-redo">
+                            <a href="javascript:;" class="execC-but" onclick="document.execCommand('redo',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-list">
+                            <a href="javascript:;" class="execC-but"
+                                onclick="document.execCommand('insertOrderedList',true);"></a>
+                        </div>
+                        <div class="execCommand-item font-unOrderList">
+                            <a href="javascript:;" class="execC-but"
+                                onclick="document.execCommand('insertUnorderedList',true);"></a>
+                        </div>
+                        <div class="execCommand-item font-indent">
+                            <a href="javascript:;" class="execC-but"
+                                onclick="document.execCommand('indent',false);"></a>
+                        </div>
+                        <div class="execCommand-item font-outdent">
+                            <a href="javascript:;" class="execC-but"
+                                onclick="document.execCommand('outdent',false);"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="alert-box">
+                    <span class="alert-content"></span>
+                </div>
+                <div id="message-box" class="dp-none">
+                    <span class="message-content"></span>
+                </div>
+                <div id="slider-preview">
+                    <div id="code"></div>
+                </div>
+
+                <!-- default toolbar div here -->
+                <!-- The code goes here -->
+
+                <!-- End of default toolbar position -->
+
+                <div id="canvas" class="flb-p1">
+                    <div style="margin-bottom: 100px" class="container" data-intro="Slider editing canvas"
+                        data-step="2"></div>
+                    <div id="element-attrSetting-menu" class="panel1">
+                        <div class="move"></div>
+                        <div class="setting-menu-head">
+                            <div data-lang="settings_background" class="bgsetting-but setting-tag
+                                        text-focus">
+                                背景设置
+                            </div>
+                            <div data-lang="settings_border" class="bordersetting-but setting-tag">
+                                边框设置
+                            </div>
+                            <div data-lang="settings_shadow" class="boxshadowsetting-but setting-tag">
+                                内阴影
+                            </div>
+                            <div data-lang="settings_transform" class="transformsetting-but setting-tag">
+                                变换
+                            </div>
+                        </div>
+                        <div class="close-menu" data-title="btn_close"></div>
+                        <div class="bgsetting attr-setting-panel">
+                            <div class="setting-left">
+                                <div class="setting-title" data-lang="settings_title_bgColor">
+                                    背景色
+                                </div>
+                                <div class="rgbcolor" data-check="true" data-type="backgroundColor"
+                                    data-event="setStyleAttr">
+                                    <div class="red-setting">
+                                        <label class="item-name" data-lang="settings_item_red">红</label>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="green-setting">
+                                        <label class="item-name" data-lang="settings_item_green">绿</label>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="blue-setting">
+                                        <div class="item-name" data-lang="settings_item_blue">
+                                            蓝
+                                        </div>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="color-preview"></div>
+                                </div>
+                            </div>
+                            <div class="setting-right">
+                                <div class="setting-title" data-lang="settings_title_bgAttribute">
+                                    背景属性
+                                </div>
+                                <div class="setting-element
+                                            for-backgroundColor" data-input="checkbox" data-event="setStyleAttr"
+                                    data-type="backgroundColor" data-param="transparent">
+                                    <label class="item-name long" data-lang="settings_item_bgColor">背景色</label>
+                                    <input type="checkbox" class="short
+                                                value-input" />
+                                </div>
+                                <div class="setting-element" data-unit="" data-factor="100" data-check="true"
+                                    data-input="range" data-type="opacity" data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_opacity">透明度</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+                                <div class="setting-element" data-unit="px" data-factor="1" data-check="true"
+                                    data-input="range" data-type="fontSize" data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_fontSize">字体大小</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bordersetting attr-setting-panel">
+                            <div class="setting-left">
+                                <div class="setting-title" data-lang="settings_title_borderAttribute">
+                                    边框属性
+                                </div>
+                                <div class="setting-element" data-input="select" data-type="borderStyle"
+                                    data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_borderType">类型</label>
+                                    <select class="value-input middle">
+                                        <option value="none" data-lang="border_none">无</option>
+                                        <option value="solid" data-lang="border_solid">
+                                            实线
+                                        </option>
+                                        <option value="dashed" data-lang="border_dashed">
+                                            折线
+                                        </option>
+                                        <option value="double" data-lang="border_double">
+                                            双实线
+                                        </option>
+                                        <option value="dotted" data-lang="border_dotted">
+                                            虚线
+                                        </option>
+                                        <option value="groove" data-lang="border_groove">
+                                            3D凹槽
+                                        </option>
+                                        <option value="inset" data-lang="border_inset">
+                                            3D凹边
+                                        </option>
+                                        <option value="outset" data-lang="border_outset">
+                                            3D凸边
+                                        </option>
+                                        <option value="ridge" data-lang="border_ridge">
+                                            菱形边
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="setting-element" data-unit="px" data-factor="5" data-input="range"
+                                    data-type="borderWidth" data-event="setStyleAttr">
+                                    <label class="item-name short" data-lang="settings_item_borderWidth">宽度</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+
+                                <div class="rgbcolor" data-check="false" data-type="borderColor"
+                                    data-event="setStyleAttr">
+                                    <div class="red-setting">
+                                        <label class="item-name" data-lang="settings_item_red">红</label>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="green-setting">
+                                        <label class="item-name" data-lang="settings_item_green">绿</label>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="blue-setting">
+                                        <div class="item-name" data-lang="settings_item_blue">
+                                            蓝
+                                        </div>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="color-preview"></div>
+                                </div>
+                            </div>
+                            <div class="setting-right">
+                                <div class="setting-title" data-lang="settings_title_bdrAttribute">
+                                    圆角
+                                </div>
+                                <div class="setting-element" data-unit="px" data-factor="1" data-input="range"
+                                    data-type="borderTopLeftRadius" data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_leftTop">左上圆角</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+                                <div class="setting-element" data-unit="px" data-factor="1" data-input="range"
+                                    data-type="borderTopRightRadius" data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_rightTop">右上圆角</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+                                <div class="setting-element" data-unit="px" data-factor="1" data-input="range"
+                                    data-type="borderBottomLeftRadius" data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_leftBottom">左下圆角</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+                                <div class="setting-element" data-unit="px" data-factor="1" data-input="range"
+                                    data-type="borderBottomRightRadius" data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_rightBottom">右下圆角</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="boxshadowsetting
+                                    attr-setting-panel">
+                            <div class="setting-left">
+                                <div class="setting-title" data-lang="settings_title_boxShadowColor">
+                                    阴影颜色
+                                </div>
+                                <div class="rgbcolor" data-check="false" data-type="boxShadow"
+                                    data-event="setStyleAttr">
+                                    <div class="red-setting">
+                                        <label class="item-name" data-lang="settings_item_red">红</label>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="green-setting">
+                                        <label class="item-name" data-lang="settings_item_green">绿</label>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="blue-setting">
+                                        <div class="item-name" data-lang="settings_item_blue">
+                                            蓝
+                                        </div>
+                                        <input type="range" class="value-input" />
+                                        <div class="preview"></div>
+                                    </div>
+                                    <div class="color-preview"></div>
+                                </div>
+                            </div>
+                            <div class="setting-right">
+                                <div class="setting-title" data-lang="settings_title_boxShadowAttr">
+                                    阴影属性
+                                </div>
+                                <div class="setting-element" data-number="5" data-unit="px" data-factor="2"
+                                    data-input="range" data-type="boxShadow" data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_innerShadow">内阴影</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="transformsetting
+                                    attr-setting-panel">
+                            <div class="setting-left">
+                                <div class="setting-title" data-lang="settings_title_rotate">
+                                    旋转
+                                </div>
+                                <div class="setting-element" data-unit="" data-multi="36" data-factor="10"
+                                    data-input="range" data-type="WebkitTransform" data-event="setStyleAttr">
+                                    <label class="item-name short" data-lang="settings_item_angle">角度</label>
+                                    <input type="range" class="value-input" />
+                                </div>
+                            </div>
+                            <div class="setting-right">
+                                <div class="setting-title" data-lang="settings_title_animation">
+                                    动画
+                                </div>
+                                <div class="setting-element" data-input="select" data-type="WebkitAnimation"
+                                    data-event="setStyleAttr">
+                                    <label class="item-name normal" data-lang="settings_item_animType">类型</label>
+                                    <select class="value-input middle">
+                                        <option value="none" data-lang="settings_item_animType_none">
+                                            无
+                                        </option>
+                                        <option value="rightRotate infinite
+                                                    1s" data-lang="settings_item_animType_rotation">
+                                            旋转
+                                        </option>
+                                        <option value="scale infinite 1s" data-lang="settings_item_animType_zoom">
+                                            缩放
+                                        </option>
+                                        <option value="x-spin infinite 1s" data-lang="settings_item_animType_reverseLR">
+                                            左右翻转
+                                        </option>
+                                        <option value="y-spin infinite 1s" data-lang="settings_item_animType_reverseTB">
+                                            上下翻转
+                                        </option>
+                                        <option value="up-down infinite 1s" data-lang="settings_item_animType_moveTB">
+                                            上下弹动
+                                        </option>
+                                        <option value="left-right infinite
+                                                    1s" data-lang="settings_item_animType_moveLR">
+                                            左右弹动
+                                        </option>
+                                        <option value="ccw-round infinite
+                                                    1s" data-lang="settings_item_animType_roundCCW">
+                                            逆时针绕行
+                                        </option>
+                                        <option value="cw-round infinite 1s" data-lang="settings_item_animType_roundCW">
+                                            顺时针绕行
+                                        </option>
+                                        <option value="swing infinite 1s" data-lang="settings_item_animType_swingCW">
+                                            顺时针摆动
+                                        </option>
+                                        <option value="ccw-swing infinite
+                                                    1s" data-lang="settings_item_animType_swingCCW">
+                                            逆时针摆动
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="element-operate-menu" class="panel1">
+                        <div class="close-menu" data-title="btn_close"></div>
+                        <div class="elem-operation">
+                            <div id="elem-delete" class="elem-item elem-setting-item" data-event="deleteElement"
+                                data-title="canvasMenu_delete" data-lang="canvasMenu_delete">
+                                Delete
+                            </div>
+                            <div id="elem-copy" class="elem-item elem-setting-item" data-event="copyElement"
+                                data-title="canvasMenu_copy" data-lang="canvasMenu_copy">
+                                Copy
+                            </div>
+                            <div id="elem-copy" class="elem-item elem-setting-item" data-event="cutElement"
+                                data-title="canvasMenu_cut" data-lang="canvasMenu_cut">
+                                Cut
+                            </div>
+                            <div id="elem-paste" class="elem-item paste-menu-item" data-event="pasteElement"
+                                data-title="canvasMenu_paste" data-lang="canvasMenu_paste">
+                                Paste
+                            </div>
+                        </div>
+                        <div class="elem-operation zIndex-setting-item">
+                            <div id="elem-zIndex-upward" class="elem-item" data-event="moveUpward"
+                                data-title="canvasMenu_layerForward" data-lang="canvasMenu_layerForward">
+                                Move Up - One Layer
+                            </div>
+                            <div id="elem-zIndex-downward" class="elem-item" data-event="moveDownward"
+                                data-title="canvasMenu_layerBackward" data-lang="canvasMenu_layerBackward">
+                                Move Down - One Layer
+                            </div>
+                            <div id="elem-zIndex-toTop" class="elem-item" data-event="moveToTop"
+                                data-title="canvasMenu_layerFont" data-lang="canvasMenu_layerFont">
+                                Top
+                            </div>
+                            <div id="elem-zIndex-toBottom" class="elem-item" data-event="moveToBottom"
+                                data-title="canvasMenu_layerBack" data-lang="canvasMenu_layerBack">
+                                Bottom
+                            </div>
+                        </div>
+                        <!-- <div class="elem-operation dp-none textedit-setting-item menu-detect-item">
+                            <div id="show_execCommandDetail" class="elem-item" data-event="showEcd" data-title="打开文本编辑工具栏">工具栏</div>
+                        </div> -->
+                        <div class="elem-operation dp-none
+                                    codebox-setting-item menu-detect-item">
+                            <div class="elem-item" data-event="codeboxSetting" data-title="设置编辑框的编程语言"
+                                data-lang="canvasMenu_programLanguage">
+                                Programming Language
+                            </div>
+                            <div class="elem-item" data-event="codeboxThemeSetting" data-title="编辑框主题"
+                                data-lang="canvasMenu_theme">
+                                Theme
+                            </div>
+                        </div>
+                        <div class="elem-operation">
+                            <div class="elem-item" data-event="backgroundSetting" data-title="canvasMenu_background"
+                                data-lang="canvasMenu_background">
+                                Background
+                            </div>
+                            <div class="elem-item" data-event="elemAttrSetting" data-title="canvasMenu_settings"
+                                data-lang="canvasMenu_settings">
+                                Attributes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div id="shapebar" class="transition-r allow" data-intro="Shapes lib bar" data-step="3"
+                data-position="left">
+                <div id="triangle" class="shape-icon" data-type="triangle" data-title="shape_triangle"></div>
+                <div id="circular" class="shape-icon" data-type="circular" data-title="shape_circular"></div>
+                <div id="rectangle" class="shape-icon" data-type="rectangle" data-title="shape_rectangle"></div>
+                <div id="heart" class="shape-icon" data-type="heart" data-title="shape_heart"></div>
+                <div id="star" class="shape-icon" data-type="star" data-title="shape_star"></div>
+                <div id="message" class="shape-icon" data-type="message" data-title="shape_message"></div>
+                <div id="moon" class="shape-icon" data-type="moon" data-title="shape_moon"></div>
+                <div id="polygon" class="shape-icon" data-type="polygon" data-title="shape_polygon"></div>
+                <div id="customShape" class="shape-icon" data-type="custom" data-title="shape_doodle"></div>
+            </div> -->
+                <!--工具栏详细操作菜单-->
+                <div id="tool-operation" class="panel1 dp-none">
+                    <div id="tool-addAnimation-operation" class="tool-app-items">
+                        <div class="operation-item" data-event="changeSliderAnim" data-param="none"
+                            data-lang="anim_slider">
+                            Slideshow
+                        </div>
+                        <div class="operation-item" data-event="changeSliderAnim" data-param="anim-scale"
+                            data-lang="anim_sliderZoom">
+                            Enlarge
+                        </div>
+                        <div class="operation-item" data-event="changeSliderAnim" data-param="anim-ySpin"
+                            data-lang="anim_rotateLeft">
+                            Rotate Left
+                        </div>
+                        <div class="operation-item" data-event="changeSliderAnim" data-param="anim-xSpin"
+                            data-lang="anim_rotateRight">
+                            Rotate Right
+                        </div>
+                        <div class="operation-item" data-event="changeSliderAnim" data-param="anim-rightRotate"
+                            data-lang="anim_reverse">
+                            Flip
+                        </div>
+                    </div>
+                </div>
+                <div id="frame_view_menu" class="panel1 dp-none
+                            view-menu">
+                    <div class="menu-item" data-type="create" data-event="addSlider" data-lang="viewMenu_create">
+                        New
+                    </div>
+                    <div class="menu-item" data-type="copy" data-event="copySlider" data-lang="viewMenu_copy">
+                        Copy
+                    </div>
+                    <div class="menu-item" data-type="paste" data-event="pasteSlider" data-lang="viewMenu_paste">
+                        Paste
+                    </div>
+                    <div class="menu-item" data-type="insert" data-event="addSlider" data-lang="viewMenu_insert">
+                        Insert
+                    </div>
+                    <div class="menu-item" data-type="delete" data-event="deleteSlider" data-lang="viewMenu_delete">
+                        Delete
+                    </div>
+                </div>
+                <div id="view" class="cf flb-box" data-intro="Slider editing canvas" data-step="4" data-position="top">
+                    <div class="flb-p1"></div>
+                    <!-- <div class=""> -->
+                    <div id="frame-list" class="cf anim-move-left"></div>
+                    <!-- </div> -->
+                    <div class="flb-p1"></div>
+                </div>
+            </div>
+        </div>
+        <!--浏览器支持识别-->
+        <div id="mask" style="
+                    position: relative;
+                    background-color: black;
+                    width: 100%;
+                    height: 100%;
+                    " class="dp-none">
+            <div style="
+                        position: relative;
+                        width: 340px;
+                        height: 100px;
+                        margin: auto;
+                        top: 100px;
+                        " class="cf">
+                <!-- chrome -->
+                <a href="http://www.google.cn/intl/zh-CN/chrome/browser/" style="
+                            width: 100px;
+                            height: 100px;
+                            out-line: 0;
+                            border: 0;
+                            background-image: url(./img/chrome.png);
+                            float: left;
+                            margin-right: 20px;
+                            " title="Chrome browser" data-title="browser_chrome"></a>
+                <!-- liebao -->
+                <a href="http://www.liebao.cn/" style="
+                            width: 100px;
+                            height: 100px;
+                            out-line: 0;
+                            border: 0;
+                            background-image: url(./img/lbchrome.png);
+                            float: left;
+                            margin-right: 20px;
+                            " data-title="browser_LieBao" title="LieBao chrome browser"></a>
+                <!-- 360 chrome -->
+                <a href="http://chrome.360.cn/" style="
+                            width: 100px;
+                            height: 100px;
+                            out-line: 0;
+                            border: 0;
+                            background-image: url(./img/360chrome.png);
+                            float: left;
+                            " data-title="browser_360" title="360 chrome browser"></a>
+            </div>
+            <center style="
+                        position: relative;
+                        font-size: 36px;
+                        color: white;
+                        top: 200px;
+                        " data-lang="browser_notice" title="Please use lastest chrome browser for you best
+                        experience">
+                Please use the latest version of Google Chrome
+            </center>
+        </div>
+        <!-- cordova for mobile is used by phonegap -->
+    <canvas id="preview" style="display: none;"></canvas>
+        <script type="text/javascript" src="./js/module/canvas.js"></script>
+        <script type="text/javascript" src="./js/module/toolbar.js"></script>
+        <script type="text/javascript" src="./js/module/shapebar.js"></script>
+        <script type="text/javascript" src="./js/module/view.js"></script>
+        <script type="text/javascript" src="./js/module/preview.js"></script>
+        <!--<script type="text/javascript" src="./js/module/stylebar.js"></script>-->
+        <script type="text/javascript" src="./js/module/filesystem.js"></script>
+        <!-- <script type="text/javascript" src="./js/loader.js" ></script> -->
+        <!-- UI Plugin sui is used by Android SDK H5 -->
+        <script type="text/javascript" src="./web.fs.mobile/src/sui/sui.js"></script>
+        <!-- Webfs UI Component -->
+        <script type="text/javascript" src="./web.fs.mobile/src/wfui.js"></script>
+        <!-- Modular By RequireJS -->
+        <script data-main="js/loader.js" src="./web.fs.mobile/src/lib/require.js"></script>
+    <script type="text/javascript" src='sourceMap.js'></script>
+        <script type="text/javascript" src="./js/html2canvas.js"></script>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(["_setAccount", "UA-40089255-1"]);
+            _gaq.push(["_trackPageview"]);
+
+            (function () {
+                var ga = document.createElement("script");
+                ga.type = "text/javascript";
+                ga.async = true;
+                ga.src =
+                    ("https:" == document.location.protocol
+                        ? "https://ssl"
+                        : "http://www") + ".google-analytics.com/ga.js";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        <!-- Editor End -->
+
+        <footer>
+            <hr />
+        </footer>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+
+</body>
+
+</html>

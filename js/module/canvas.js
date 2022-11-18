@@ -19,7 +19,7 @@ Core.registerModule("canvas",function(sb){
             '1:1'   : {x:595,y:842}
         },
         DATASET_PRE = 'slider',
-        DEFAULT_SLIDE_TYPE = 'impress',
+        DEFAULT_SLIDE_TYPE = 'slide',
         DEFAULT_SCREEN = '1:1',
         canvasX = 1200,
         canvasY = 600;
@@ -1932,7 +1932,7 @@ Core.registerModule("canvas",function(sb){
         },
         moveUpward:function(){
             var target = rightMenuBtn;
-            
+
             var cur = SliderDataSet[currentSlider];
             var maxElemID = cur.getLastElement(),tmp,forwardIndex = -1,forwardElemID,forwardElem,
             targetIndex;

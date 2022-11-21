@@ -1,7 +1,9 @@
 #view{
     position: absolute;
-    width: 100px;
-    /* height: 20px; */
+    width: 155px;
+    padding: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     /*left: 0;*/
     bottom: 0px;
     top: 160px;
@@ -35,9 +37,10 @@
 .frame-panel {padding-bottom: 10px;background-size: 99.99% 100%;background-position:center;}
 #frame-list{
     position: absolute;
-    width: auto;
+    width: 150px;
+    padding-left: 50px;
     /*margin: auto;*/
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
     display: inline-grid;
     row-gap: 10px;
 

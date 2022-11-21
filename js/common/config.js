@@ -106,7 +106,7 @@ var localConfig = {
 			fileSystem_notice_restore : "正在恢复上次打开文件",
 
 			text_shapebar_chooseImageColor : '请选择图形颜色',
-			text_shapebar_confirm : '确定',
+			text_shapebar_confirm : 'Confirm',
 			text_shapebar_fontSize : "笔粗",
 			textbar_paragraph : "段落",
 			textbar_title : "标题",

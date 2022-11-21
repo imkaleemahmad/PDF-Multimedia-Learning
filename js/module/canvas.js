@@ -746,7 +746,7 @@ Core.registerModule("canvas",function(sb){
         },
         renderElement : function (data) {
             var elem;
-            if(data.type === "DIV"){
+            if(data.type === "a"){
                 sb.notify({
                     type:"addText",
                     data: {
@@ -818,22 +818,22 @@ Core.registerModule("canvas",function(sb){
 
 
 
-            // pdfNewDoc = await PDFDocument.create();
-            // pages = await pdfNewDoc.copyPages(pdfSrcDoc, [1]);
-            // pdfNewDoc.addPage(pages[0]);
-            // const docUrl = await pdfNewDoc.saveAsBase64({ dataUri: true });
-            // var iframe = document.createElement('iframe');
-            // // console.log(iframe);
-            // $(iframe).attr('type','application/pdf');
-            // $(iframe).attr('src', docUrl);
-            // iframe.style.height = '100%';
-            // iframe.style.width = '100%';
-            // var container = document.createElement('div');
-            // $(container).attr("style", "position:absolute;z-index:1;left:0px;top:0px; height: 100%; width: 100%;");
-            // container.appendChild(iframe);
-            // editor.appendChild(container);
-            // var dataID = global._insetIntoDataset(container, iframe, null);
-            // elementOpertateFunc(dataID, container, container);
+            pdfNewDoc = await PDFDocument.create();
+            pages = await pdfNewDoc.copyPages(pdfSrcDoc, [1]);
+            pdfNewDoc.addPage(pages[0]);
+            const docUrl = await pdfNewDoc.saveAsBase64({ dataUri: true });
+            var iframe = document.createElement('iframe');
+            // console.log(iframe);
+            $(iframe).attr('type','application/pdf');
+            $(iframe).attr('src', docUrl);
+            iframe.style.height = '100%';
+            iframe.style.width = '100%';
+            var container = document.createElement('div');
+            $(container).attr("style", "position:absolute;z-index:1;left:0px;top:0px; height: 100%; width: 100%;");
+            container.appendChild(iframe);
+            editor.appendChild(container);
+            var dataID = global._insetIntoDataset(container, iframe, null);
+            elementOpertateFunc(dataID, container, container);
         }, 
         addPdfPageToImg : async function (image_src) {
             var image = document.createElement('img');
@@ -2064,7 +2064,7 @@ Core.registerModule("canvas",function(sb){
                     
                 }
                 //textArea
-                else if(copyParams["type"]=="DIV") {
+                else if(copyParams["type"]=="a") {
                     var textElementId = addTextFunc(copyParams);
                     global.setSelect(textElementId);
                 }

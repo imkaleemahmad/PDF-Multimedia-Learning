@@ -1,5 +1,5 @@
 Core.registerModule("view",function(sb){
-    var frame_count = 0,frame_number = 0,VIEWSCALE=5, MAX_FRAME_NUMBER=10,
+    var frame_count = 0,frame_number = 0,VIEWSCALE=5, MAX_FRAME_NUMBER=500,
     frames = new sb.ObjectLink(),dispFrames = new sb.ObjectLink(),hidFrames = new sb.ObjectLink(),
     currentFrame = null,frameContainer = null,
     changeCurrFrameFunc = null,

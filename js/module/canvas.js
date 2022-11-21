@@ -1532,7 +1532,7 @@ Core.registerModule("canvas",function(sb){
         },
         addText:function(textObj){
             var obj = {
-                height:50,
+                height:200,
                 width:300
             };
             var partSize = 8,dataID;

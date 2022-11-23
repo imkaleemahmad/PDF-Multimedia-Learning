@@ -286,7 +286,7 @@
     float: left;
 }
 .preview{
-
+    position: relative;
     height: 28px;
     width: 28px;
     border: 1px solid #100;

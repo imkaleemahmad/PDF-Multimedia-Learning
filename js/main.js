@@ -86,12 +86,12 @@ const recFunction = async() => {
 }
 
 // Link styles
-let linkStyles = "display: block; padding: 10px; color: blue; text-decoration: none; "
+let linkStyles = "display: block; padding: 15px; color: blue; text-decoration: none; "
     //
     //─── FUNCTION TO CREATE AN AUDIO ELEMENT TO PLAYBACK AND DOWNLOAD RECORDING ─────
 
 function createAudioElement(blobUrl) {
-    let divStyles = "position: relative; display: flex; justify-content: flex-end; bottom: 950px; padding-bottom: 5px"
+    let divStyles = "position: relative; display: grid; justify-content: flex-end; bottom: 950px; padding-bottom: 3px;padding-right: 10px;"
     // Create a div element
     const divEl = document.createElement('div');
     // Assign it a class

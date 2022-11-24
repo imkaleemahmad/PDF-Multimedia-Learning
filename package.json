@@ -1,24 +1,23 @@
 {
-  "name": "imper",
-  "version": "0.1.0",
-  "description": "impre--a visual editor for create wonderfull presentation",
+  "name": "Digital Web Authoring Tool",
+  "version": "1.0",
   "main": "index.html",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/switer/slider.git"
+    "url": "https://github.com/imkaleemahmad/new-slidesEditor"
   },
   "keywords": [
     "html5",
-    "slider",
+    "web authoring tool",
     "impress",
     "visual editor",
     "web editor"
   ],
-  "author": "switer",
+  "author": "Kaleem Ahmad",
+  "email": "imkaleemahmad@gmail.com",
   "license": "BSD",
   "gitHead": "098f316b02a9873b628cb4e841568206e7ddcc64",
-  "readmeFilename": "README.md",
   "devDependencies": {
     "tailwindcss": "^3.2.2"
   },

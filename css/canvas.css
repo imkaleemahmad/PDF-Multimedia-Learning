@@ -7,7 +7,9 @@
 
     position: relative;
     margin: auto;
-    border: 1px solid black;
+    border-color: black; 
+    border-style: solid; 
+    border-width: 0.001em;
 
 }
 .editor{

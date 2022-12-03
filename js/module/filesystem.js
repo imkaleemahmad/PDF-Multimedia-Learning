@@ -33,7 +33,7 @@ Core.registerModule("filesystem", function(sb){
 			});
 			$('#returnHomeBtn').on('click', function () {
 				$('#filesystem').hide();
-				$('body').css('overflow', 'hidden');
+				// $('body').css('overflow', 'hidden');
 				$("#appContainer").removeClass('dp-none');
 				sb.notify({
 					type: 'enterEditorMode',

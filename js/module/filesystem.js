@@ -211,9 +211,9 @@ Core.registerModule("filesystem", function(sb){
 					global._curTempId  = (global._curTempId + 1) % 2;
 					//Re-mark the cache file that is currently saved successfully
 					window.localStorage.setItem('last_temp_file_name', filename)
-					// global._errHandler('成功保存临时文件')
+					// global._errHandler('Temporary file successfully saved')
 			}, function (err) {
-					// global._errHandler('保存临时文件失败：' + err.code)
+					// global._errHandler('Failed to save temp file:' + err.code)
 					console.log('Failed to Save File:' + err.code)
 					global._lastSaveId = -1;
 					global._curSaveId = 1;

@@ -59,12 +59,21 @@
     <!-- URL Parameter -->
     <script>
 
-        const url = window.location.search;
-        const urlObject = new URL(url);
-        const id = urlObject.searchParams.get('id')
-        var result = window.location.href.split('/').reverse()[0]
-        document.getElementById("importInp").innerHTML = result;
-        
+        let file = document.getElementById("#importInp");
+        let endpoint = "https://new-slides-editor.vercel.app/";
+        let url_string = window.location.href;
+        let url = new URL(url_string);
+        console.log(url_string);
+        let uid = url.searchParams.get("uid");
+        console.log(uid);
+        let content_id = url.searchParams.get("content_id");
+        console.log(content_id);
+        let filename = url.searchParams.get("filename");
+        console.log(filename);
+        let addsURL = endpoint + "?uid=" + uid + "&content_id=" + content_id + "&filename=" + filename;
+        console.log(addsURL);
+        file.src = addsURL;
+
     </script>
     <!-- End -->
 

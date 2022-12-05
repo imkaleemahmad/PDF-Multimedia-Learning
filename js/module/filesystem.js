@@ -258,7 +258,7 @@ Core.registerModule("filesystem", function(sb){
 			})
 			sb.notify({
 					type : 'enterPreviewMode',
-					data : content
+					data : null
 			})
 			$('#addFile').css('visibility', 'hidden');
 			

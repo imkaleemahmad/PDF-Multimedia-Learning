@@ -59,20 +59,20 @@
     <!-- URL Parameter -->
     <script>
 
-        let file = document.getElementById("#importInp");
-        let endpoint = "https://new-slides-editor.vercel.app/";
-        let url_string = window.location.href;
-        let url = new URL(url_string);
-        console.log(url_string);
-        let uid = url.searchParams.get("uid");
-        console.log(uid);
-        let content_id = url.searchParams.get("content_id");
-        console.log(content_id);
-        let filename = url.searchParams.get("filename");
-        console.log(filename);
-        let addsURL = endpoint + "?uid=" + uid + "&content_id=" + content_id + "&filename=" + filename;
-        console.log(addsURL);
-        file.src = addsURL;
+        // let file = document.getElementById("#importInp");
+        // let endpoint = "https://new-slides-editor.vercel.app/";
+        // let url_string = window.location.href;
+        // let url = new URL(url_string);
+        // console.log(url_string);
+        // let uid = url.searchParams.get("uid");
+        // console.log(uid);
+        // let content_id = url.searchParams.get("content_id");
+        // console.log(content_id);
+        // let filename = url.searchParams.get("filename");
+        // console.log(filename);
+        // let addsURL = endpoint + "?uid=" + uid + "&content_id=" + content_id + "&filename=" + filename;
+        // console.log(addsURL);
+        // file.src = addsURL;
 
     </script>
     <!-- End -->
@@ -113,17 +113,13 @@
     <!-- end of inline temp css  -->
 </head>
 
-<body style="background: white">
+<body style="background: #F1F2F6">
     <header>
-        <nav class="navbar navbar-light navbar-expand bg-light
+        <nav style="--bs-navbar-padding-y:0;" class="navbar navbar-black navbar-expand bg-black
                 navigation-clean">
             <div class="container">
-                <a style="padding: right 50px ;" class="navbar-brand" href="#">Digital Textbook Web Authoring Tool</a>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <a class="btn btn-primary btn-sm border rounded-pill
-                            ms-auto" role="button" href="#">Log<span>
-                        </span>Out</a>
-                </div>
+                <a style="color: white;" class="navbar-brand" href="#">Digital Textbook Web Authoring Tool</a>
+                
             </div>
         </nav>
     </header>
@@ -334,7 +330,7 @@
                                     </div>
                                 </a>
 
-                                <a class="d-print-inline-block d-sm-inline
+                                <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
                                     custom-btn light-btn" href="#" role="button"
@@ -350,7 +346,7 @@
                                             margin-top: -10px;
                                             border: none;
                                             "></div>code
-                                    </i>Add&nbsp;Code</a>
+                                    </i>Add&nbsp;Code</a> -->
 
                                 <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
@@ -882,7 +878,7 @@
                                             0 0 1 1-1z"></path>
                                         </svg>Preview
                                     </a>
-                                    <a class="d-print-inline-block d-sm-inline
+                                    <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
                                     custom-btn light-btn" href="#" role="button" style="height: 35px; font-size: 12px">
@@ -900,7 +896,7 @@
                                         "></div>
 
                                         <i class="material-icons">compare</i>Transition
-                                    </a>
+                                    </a> -->
 
                         </div>
                     </div>
@@ -1000,24 +996,24 @@
                             <select class="execC-but" onchange="if(this.value!=-1)
                                         document.execCommand('fontName',false,this.value);this.value=-1;">
                                 <option value="-1" data-lang="textbar_fontFamily">
-                                    选择字体
+                                    Choose Font
                                 </option>
-                                <option value="宋体" data-lang="textbar_ff_song">
-                                    宋体
+                                <option value="Noto Sans KR" data-lang="textbar_ff_song">
+                                    Noto Sans KR
                                 </option>
-                                <option value="黑体" data-lang="textbar_ff_blackbody">
-                                    黑体
+                                <option value="Noto Serif KR" data-lang="textbar_ff_blackbody">
+                                    Noto Serif KR
                                 </option>
-                                <option value="楷体_GB2312">楷体</option>
+                                <!-- <option value="楷体_GB2312">楷体</option>
                                 <option value="仿宋_GB2312">仿宋</option>
                                 <option value="隶书">隶书</option>
                                 <option value="微软雅黑" data-lang="textbar_ff_yahei">
                                     微软雅黑
                                 </option>
-                                <option value="幼圆">幼圆</option>
+                                <option value="幼圆">幼圆</option> -->
                                 <option value="Arial">Arial</option>
                                 <option value="Open Sans">Open Sans</option>
-                                <option value="sans-serif">sans-serif</option>
+                                <option value="sans-serif">Sans Serif</option>
                             </select>
                         </div>
                         <div class="execCommand-item font-size">
@@ -1026,13 +1022,13 @@
                                 <option value="-1" data-lang="textbar_fontSize">
                                     字体大小
                                 </option>
-                                <option value="1">1(10px)</option>
-                                <option value="2">2(12px)</option>
-                                <option value="3">3(14px)</option>
-                                <option value="4">4(16px)</option>
-                                <option value="5">5(18px)</option>
-                                <option value="6">6(24px)</option>
-                                <option value="7">7(36px)</option>
+                                <option value="1">1 (10px)</option>
+                                <option value="2">2 (12px)</option>
+                                <option value="3">3 (14px)</option>
+                                <option value="4">4 (16px)</option>
+                                <option value="5">5 (18px)</option>
+                                <option value="6">6 (24px)</option>
+                                <option value="7">7 (36px)</option>
                             </select>
                         </div>
                         <div class="execCommand-item font-color">
@@ -1053,8 +1049,8 @@
                                 <option value="h4" data-langPre="textbar_title">4</option>
                                 <option value="h5" data-langPre="textbar_title">5</option>
                                 <option value="h6" data-langPre="textbar_title">6</option>
-                                <option value="p" data-lang="textbar_text">正文</option>
-                                <option value="pre" data-lang="textbar_pre">pre</option>
+                                <option value="p" data-lang="textbar_text">Text</option>
+                                <option value="pre" data-lang="textbar_pre">Pre</option>
                             </select>
                         </div>
                         <div class="execCommand-item font-leftAlign">
@@ -1141,39 +1137,39 @@
                         <div class="setting-menu-head">
                             <div data-lang="settings_background" class="bgsetting-but setting-tag
                                         text-focus">
-                                背景设置
+                                Background Settings
                             </div>
                             <div data-lang="settings_border" class="bordersetting-but setting-tag">
-                                边框设置
+                                Border Settings
                             </div>
                             <div data-lang="settings_shadow" class="boxshadowsetting-but setting-tag">
-                                内阴影
+                                Shadow Settings
                             </div>
                             <div data-lang="settings_transform" class="transformsetting-but setting-tag">
-                                变换
+                                Transform
                             </div>
                         </div>
                         <div class="close-menu" data-title="btn_close"></div>
                         <div class="bgsetting attr-setting-panel">
                             <div class="setting-left">
                                 <div class="setting-title" data-lang="settings_title_bgColor">
-                                    背景色
+                                    Background Color
                                 </div>
                                 <div class="rgbcolor" data-check="true" data-type="backgroundColor"
                                     data-event="setStyleAttr">
                                     <div class="red-setting">
-                                        <label class="item-name" data-lang="settings_item_red">红</label>
+                                        <label class="item-name" data-lang="settings_item_red">Red</label>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
                                     </div>
                                     <div class="green-setting">
-                                        <label class="item-name" data-lang="settings_item_green">绿</label>
+                                        <label class="item-name" data-lang="settings_item_green">Green</label>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
                                     </div>
                                     <div class="blue-setting">
                                         <div class="item-name" data-lang="settings_item_blue">
-                                            蓝
+                                            Blue
                                         </div>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
@@ -1183,23 +1179,23 @@
                             </div>
                             <div class="setting-right">
                                 <div class="setting-title" data-lang="settings_title_bgAttribute">
-                                    背景属性
+                                    Background Attributes
                                 </div>
                                 <div class="setting-element
                                             for-backgroundColor" data-input="checkbox" data-event="setStyleAttr"
                                     data-type="backgroundColor" data-param="transparent">
-                                    <label class="item-name long" data-lang="settings_item_bgColor">背景色</label>
+                                    <label class="item-name long" data-lang="settings_item_bgColor">Background Color</label>
                                     <input type="checkbox" class="short
                                                 value-input" />
                                 </div>
                                 <div class="setting-element" data-unit="" data-factor="100" data-check="true"
                                     data-input="range" data-type="opacity" data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_opacity">透明度</label>
+                                    <label class="item-name normal" data-lang="settings_item_opacity">Opacity</label>
                                     <input type="range" class="value-input" />
                                 </div>
                                 <div class="setting-element" data-unit="px" data-factor="1" data-check="true"
                                     data-input="range" data-type="fontSize" data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_fontSize">字体大小</label>
+                                    <label class="item-name normal" data-lang="settings_item_fontSize">Font Size</label>
                                     <input type="range" class="value-input" />
                                 </div>
                             </div>
@@ -1207,60 +1203,60 @@
                         <div class="bordersetting attr-setting-panel">
                             <div class="setting-left">
                                 <div class="setting-title" data-lang="settings_title_borderAttribute">
-                                    边框属性
+                                    Border Attributes
                                 </div>
                                 <div class="setting-element" data-input="select" data-type="borderStyle"
                                     data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_borderType">类型</label>
+                                    <label class="item-name normal" data-lang="settings_item_borderType">Border Type</label>
                                     <select class="value-input middle">
-                                        <option value="none" data-lang="border_none">无</option>
+                                        <option value="none" data-lang="border_none">None</option>
                                         <option value="solid" data-lang="border_solid">
-                                            实线
+                                            Solid
                                         </option>
                                         <option value="dashed" data-lang="border_dashed">
-                                            折线
+                                            Dashed
                                         </option>
                                         <option value="double" data-lang="border_double">
-                                            双实线
+                                            Double
                                         </option>
                                         <option value="dotted" data-lang="border_dotted">
-                                            虚线
+                                            Dotted
                                         </option>
                                         <option value="groove" data-lang="border_groove">
-                                            3D凹槽
+                                            Groove
                                         </option>
                                         <option value="inset" data-lang="border_inset">
-                                            3D凹边
+                                            Inset
                                         </option>
                                         <option value="outset" data-lang="border_outset">
-                                            3D凸边
+                                            outset
                                         </option>
                                         <option value="ridge" data-lang="border_ridge">
-                                            菱形边
+                                            Ridge
                                         </option>
                                     </select>
                                 </div>
                                 <div class="setting-element" data-unit="px" data-factor="5" data-input="range"
                                     data-type="borderWidth" data-event="setStyleAttr">
-                                    <label class="item-name short" data-lang="settings_item_borderWidth">宽度</label>
+                                    <label class="item-name short" data-lang="settings_item_borderWidth">Border Width</label>
                                     <input type="range" class="value-input" />
                                 </div>
 
                                 <div class="rgbcolor" data-check="false" data-type="borderColor"
                                     data-event="setStyleAttr">
                                     <div class="red-setting">
-                                        <label class="item-name" data-lang="settings_item_red">红</label>
+                                        <label class="item-name" data-lang="settings_item_red">Red</label>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
                                     </div>
                                     <div class="green-setting">
-                                        <label class="item-name" data-lang="settings_item_green">绿</label>
+                                        <label class="item-name" data-lang="settings_item_green">Green</label>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
                                     </div>
                                     <div class="blue-setting">
                                         <div class="item-name" data-lang="settings_item_blue">
-                                            蓝
+                                            Blue
                                         </div>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
@@ -1270,26 +1266,26 @@
                             </div>
                             <div class="setting-right">
                                 <div class="setting-title" data-lang="settings_title_bdrAttribute">
-                                    圆角
+                                    Border Attributes
                                 </div>
                                 <div class="setting-element" data-unit="px" data-factor="1" data-input="range"
                                     data-type="borderTopLeftRadius" data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_leftTop">左上圆角</label>
+                                    <label class="item-name normal" data-lang="settings_item_leftTop">Upper left corner</label>
                                     <input type="range" class="value-input" />
                                 </div>
                                 <div class="setting-element" data-unit="px" data-factor="1" data-input="range"
                                     data-type="borderTopRightRadius" data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_rightTop">右上圆角</label>
+                                    <label class="item-name normal" data-lang="settings_item_rightTop">Upper right round corner</label>
                                     <input type="range" class="value-input" />
                                 </div>
                                 <div class="setting-element" data-unit="px" data-factor="1" data-input="range"
                                     data-type="borderBottomLeftRadius" data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_leftBottom">左下圆角</label>
+                                    <label class="item-name normal" data-lang="settings_item_leftBottom">Lower left round corner</label>
                                     <input type="range" class="value-input" />
                                 </div>
                                 <div class="setting-element" data-unit="px" data-factor="1" data-input="range"
                                     data-type="borderBottomRightRadius" data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_rightBottom">右下圆角</label>
+                                    <label class="item-name normal" data-lang="settings_item_rightBottom">Lower right round corner</label>
                                     <input type="range" class="value-input" />
                                 </div>
                             </div>
@@ -1298,23 +1294,23 @@
                                     attr-setting-panel">
                             <div class="setting-left">
                                 <div class="setting-title" data-lang="settings_title_boxShadowColor">
-                                    阴影颜色
+                                    Shadow color
                                 </div>
                                 <div class="rgbcolor" data-check="false" data-type="boxShadow"
                                     data-event="setStyleAttr">
                                     <div class="red-setting">
-                                        <label class="item-name" data-lang="settings_item_red">红</label>
+                                        <label class="item-name" data-lang="settings_item_red">red</label>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
                                     </div>
                                     <div class="green-setting">
-                                        <label class="item-name" data-lang="settings_item_green">绿</label>
+                                        <label class="item-name" data-lang="settings_item_green">green</label>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
                                     </div>
                                     <div class="blue-setting">
                                         <div class="item-name" data-lang="settings_item_blue">
-                                            蓝
+                                            blue
                                         </div>
                                         <input type="range" class="value-input" />
                                         <div class="preview"></div>
@@ -1324,11 +1320,11 @@
                             </div>
                             <div class="setting-right">
                                 <div class="setting-title" data-lang="settings_title_boxShadowAttr">
-                                    阴影属性
+                                    Shadow attribute
                                 </div>
                                 <div class="setting-element" data-number="5" data-unit="px" data-factor="2"
                                     data-input="range" data-type="boxShadow" data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_innerShadow">内阴影</label>
+                                    <label class="item-name normal" data-lang="settings_item_innerShadow">Internal shadow</label>
                                     <input type="range" class="value-input" />
                                 </div>
                             </div>
@@ -1337,58 +1333,58 @@
                                     attr-setting-panel">
                             <div class="setting-left">
                                 <div class="setting-title" data-lang="settings_title_rotate">
-                                    旋转
+                                    Rotate
                                 </div>
                                 <div class="setting-element" data-unit="" data-multi="36" data-factor="10"
                                     data-input="range" data-type="WebkitTransform" data-event="setStyleAttr">
-                                    <label class="item-name short" data-lang="settings_item_angle">角度</label>
+                                    <label class="item-name short" data-lang="settings_item_angle">angle</label>
                                     <input type="range" class="value-input" />
                                 </div>
                             </div>
                             <div class="setting-right">
                                 <div class="setting-title" data-lang="settings_title_animation">
-                                    动画
+                                    Animation
                                 </div>
                                 <div class="setting-element" data-input="select" data-type="WebkitAnimation"
                                     data-event="setStyleAttr">
-                                    <label class="item-name normal" data-lang="settings_item_animType">类型</label>
+                                    <label class="item-name normal" data-lang="settings_item_animType">type</label>
                                     <select class="value-input middle">
                                         <option value="none" data-lang="settings_item_animType_none">
-                                            无
+                                            none
                                         </option>
                                         <option value="rightRotate infinite
                                                     1s" data-lang="settings_item_animType_rotation">
-                                            旋转
+                                            Rotate
                                         </option>
                                         <option value="scale infinite 1s" data-lang="settings_item_animType_zoom">
-                                            缩放
+                                            Scaling
                                         </option>
                                         <option value="x-spin infinite 1s" data-lang="settings_item_animType_reverseLR">
-                                            左右翻转
+                                            Left -right flip
                                         </option>
                                         <option value="y-spin infinite 1s" data-lang="settings_item_animType_reverseTB">
-                                            上下翻转
+                                           Up and down
                                         </option>
                                         <option value="up-down infinite 1s" data-lang="settings_item_animType_moveTB">
-                                            上下弹动
+                                            Up and down
                                         </option>
                                         <option value="left-right infinite
                                                     1s" data-lang="settings_item_animType_moveLR">
-                                            左右弹动
+                                            Left and right
                                         </option>
                                         <option value="ccw-round infinite
                                                     1s" data-lang="settings_item_animType_roundCCW">
-                                            逆时针绕行
+                                            Adverse clockwise
                                         </option>
                                         <option value="cw-round infinite 1s" data-lang="settings_item_animType_roundCW">
-                                            顺时针绕行
+                                            Clockwise
                                         </option>
                                         <option value="swing infinite 1s" data-lang="settings_item_animType_swingCW">
-                                            顺时针摆动
+                                            anti Clockwise
                                         </option>
                                         <option value="ccw-swing infinite
                                                     1s" data-lang="settings_item_animType_swingCCW">
-                                            逆时针摆动
+                                            Swing against time
                                         </option>
                                     </select>
                                 </div>

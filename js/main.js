@@ -86,7 +86,7 @@ const recFunction = async() => {
 }
 
 // Link styles
-let linkStyles = "display: block; padding: 15px; color: blue; text-decoration: none; "
+let linkStyles = "display: block; padding: 15px; color: grey; text-decoration: none; "
     //
     //─── FUNCTION TO CREATE AN AUDIO ELEMENT TO PLAYBACK AND DOWNLOAD RECORDING ─────
 
@@ -166,14 +166,14 @@ stop.onclick = e => {
     // Enable rec button
     rec.disabled = false;
     // Restore red color on rec button
-    rec.style.backgroundColor = 'red';
+    rec.style.backgroundColor = 'transparent';
     // Disable rec animation 
     rec.classList.remove('scale');
     // Disable stop button
     stop.disabled = true;
     // Change stop color back
-    stop.style.backgroundColor = '#292929';
-    stop.style.color = 'rgb(103, 103, 103)';
+    stop.style.backgroundColor = 'transparent';
+    stop.style.color = 'black';
     // Change back title color
     title.style.color = '#313142'
         // STOP and Reset STOPWATCH

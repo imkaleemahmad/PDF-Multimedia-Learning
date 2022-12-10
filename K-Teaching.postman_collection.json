@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "08ad6e9c-1483-4ce6-91a5-3e1b01765a3c",
+		"name": "K-Teaching APIS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3075429"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Administrator/Desktop/index.html"
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://www.ktitalk.com/api/upload_file",
+					"protocol": "http",
+					"host": [
+						"www",
+						"ktitalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"upload_file"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

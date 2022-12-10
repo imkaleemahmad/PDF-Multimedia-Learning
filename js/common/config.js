@@ -1,6 +1,6 @@
 var localConfig = {
 	languages : {
-		"zh" : {
+		"kr" : {
 			//tool bar
 			toolBar_save 			: "保存",
 			toolBar_import 			: "导入幻灯片文件",
@@ -114,9 +114,9 @@ var localConfig = {
 			textbar_pre : "pre",
 			textbar_fontSize : "字体大小",
 			textbar_fontFamily : "选择字体",
-			textbar_ff_song : "宋体",
+			textbar_ff_song : "Noto Sans KR",
 			textbar_ff_yahei : "雅黑",
-			textbar_ff_blackbody : "黑体",
+			textbar_ff_blackbody : "Noto Serif KR",
 			textbar_foreColor : "请选择文字颜色",
 			textbar_hiliteColor : "请选择文字背景颜色",
 			textbar_fontColor : '改变字体颜色',
@@ -264,11 +264,11 @@ var localConfig = {
 			textbar_title : "H ",
 			textbar_text : "Text",
 			textbar_pre : "Pre",
-			textbar_fontSize : "font size",
-			textbar_fontFamily : "font family",
-			textbar_ff_song : "Song Ti",
+			textbar_fontSize : "Font Size",
+			textbar_fontFamily : "Choose Font",
+			textbar_ff_song : "Noto Sans KR",
 			textbar_ff_yahei : "Yahei",
-			textbar_ff_blackbody : "Black Body",
+			textbar_ff_blackbody : "Noto Serif KR",
 			textbar_foreColor : "Please Choose text-color",
 			textbar_hiliteColor : "Please select font bg-Color",
 			textbar_fontColor : 'Change font color',
@@ -301,7 +301,7 @@ var localConfig = {
 			browser_notice : 'Please use chrome browser for you best experience ',
 
 			//buttons
-			btn_close : 'close'
+			btn_close : 'Close'
 		}
 	}
 }

@@ -12,7 +12,7 @@ Core.registerModule("view",function(sb){
             '5:3'   : {x:150, y:90,     scale : 4 },
             '4:3'   : {x:160, y:120,    scale : 5 },
             '2:1'   : {x:160, y:80,     scale : 6.25 },
-            '1:1'   : {x:160, y:200,    scale : 4 }
+            '1:1'   : {x:160, y:200,    scale : 4 },
         },
         MAGIN_TOP_MAP = {
             '16:9'  : '10px',

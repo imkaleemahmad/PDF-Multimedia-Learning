@@ -7,16 +7,16 @@
 
     position: relative;
     margin: auto;
-    border-color: black; 
+    /* border-color: black; 
     border-style: solid; 
-    border-width: 0.001em;
+    border-width: 0.001em; */
 
 }
 .editor{
     height: 100%;
     width: 100%;
     background-color: white;
-    -webkit-box-shadow:0px 0px 14px white;
+    /* -webkit-box-shadow:0px 0px 14px white; */
 }
 .blue-block {
     text-align: center;line-height: 40px;cursor: pointer;
@@ -157,7 +157,7 @@
 }
 #element-operate-menu{
 
-    position: absolute;
+    position: fixed;
     width:150px;
     left:0px;
     top:0px;
@@ -261,14 +261,14 @@
 .close-menu{
     position: absolute;
     background-image: url(../img/close.png);
-    height: 15px;width: 15px;top:-10px;
-    right: -10px;cursor: pointer;border: 2px solid black;border-radius: 50%;background-size: 15px;
-    -webkit-transition: -webkit-transform 0.5s;
+    height: 24px;width: 24px;top:-10px;
+    right: -10px;cursor: pointer;border: 2px solid black;border-radius: 50%;background-size: 19px;
+    /* -webkit-transition: -webkit-transform 0.5s; */
     background-color: rgba(255,255,255,0.8);
 }
 .close-menu:hover {
     background-color: cornflowerblue;
-    -webkit-transform: rotate(180deg);
+    /* -webkit-transform: rotate(180deg); */
 }
 /*.close-menu:hover{
 

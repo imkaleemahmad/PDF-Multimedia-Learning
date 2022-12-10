@@ -16,7 +16,8 @@ Core.registerModule("canvas",function(sb){
             '5:3'   : {x:600,y:360},
             '4:3'   : {x:800,y:600},
             '2:1'   : {x:1000,y:500},
-            '1:1'   : {x:595,y:842}
+            '1:1'   : {x:595,y:842},
+            '3:1'   : {x:842,y:595}
         },
         DATASET_PRE = 'slider',
         DEFAULT_SLIDE_TYPE = 'slide',
@@ -331,7 +332,8 @@ Core.registerModule("canvas",function(sb){
                 "copySlider" : this.copySlider,
                 "pasteSlider" : this.pasteSlider,
                 "enterMapEdtingMode" : this.enterMapEdtingMode,
-                "updateSliderPositionData" : this.updateSliderPositionData
+                "updateSliderPositionData" : this.updateSliderPositionData,
+                "renderHtmlFromWeb" : this.renderHtmlFromWeb
             });
             for (i = 0; item =  eomItems[i]; i++) {
                 item.onclick = function(e){
@@ -883,6 +885,15 @@ Core.registerModule("canvas",function(sb){
                 const img = await global.HandlePdfLoad(pdf, options, page);
                 if(page == 1) {
                     await global.addPdfPageToImg(img.image_encoding);
+                    console.log(img.page_width)
+                    if(img.page_width > img.page_height) // LandScape
+                    {
+                        global.changeScreenScale('3:1');
+                    }
+                    else
+                    {
+                        global.changeScreenScale('1:1');
+                    }
                 } else {
                     global.createSlider('append');
                     
@@ -899,6 +910,7 @@ Core.registerModule("canvas",function(sb){
             // Fetch the first page
             const page = await pdf.getPage(page_num);
             const viewport = page.getViewport({ scale: options.scale });
+            [page_left, page_top, page_width, page_height] = page.view;
 
             // Prepare canvas using PDF page dimensions
             const canvas = document.querySelector(options.preview_selector);
@@ -920,11 +932,57 @@ Core.registerModule("canvas",function(sb){
                     console.log('Page rendered')
 
                     const image_encoding = canvas.toDataURL();
-                    resolve({ page_num, image_encoding });
+                    // resolve({ page_num, image_encoding });
+                    resolve({ page_num, image_encoding, page_width, page_height });
                 }
                 );
             });            
         }, 
+
+
+
+
+
+
+
+        renderHtmlFromWeb: function () {
+
+            
+            let url = new URL(window.location.href);
+            const id = url.searchParams.get('content_id');
+            const content_url = new URL('https://www.ktitalk.com/uploads/'+id+'.html');
+
+            console.log('Provided URL: '+url);
+            console.log('Content URL: '+content_url);
+
+
+
+            var reader = new FileReader();
+            window.fetch(content_url)
+            .then(res => res.blob()) // Gets the response and returns it as a blob
+            .then(blob => {
+                reader.readAsText(blob, 'UTF-8');
+                reader.onloadend = function (event)
+                {
+                    
+                    // var datajson = reader.result.match(/\<script\ type\=\"text\/html\"\ id\=\"datajson\"\>.*\<\/script\>/);
+                    console.log('data reader '+reader.result);
+                    var datajson = reader.result.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                    if (datajson) {
+                       var data =  datajson[0]
+                                    .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/,'')
+                                    .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/,'')
+                                    .replace(/^\<script[^\<\>]*\>/,'')
+                                    .replace(/\<\/script\>/,'');
+                        global.renderSlider(data);
+                    } 
+                }
+          })
+        },
+        
+
+
+
         readData: async function (inp) {
             var reader = new FileReader();
             var file = inp.files.item(0);
@@ -950,20 +1008,45 @@ Core.registerModule("canvas",function(sb){
 
 
             } else {
-            reader.readAsText(file, 'UTF-8');
-            reader.onloadend = function (event) {
-                // var datajson = reader.result.match(/\<script\ type\=\"text\/html\"\ id\=\"datajson\"\>.*\<\/script\>/);
-                var datajson = reader.result.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
-                if (datajson) {
-                   var data =  datajson[0]
-                                .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/,'')
-                                .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/,'')
-                                .replace(/^\<script[^\<\>]*\>/,'')
-                                .replace(/\<\/script\>/,'');
-                    global.renderSlider(data);
-                } 
+                
+            // fetch('/content-practice.html')
+            // .then(res => res.blob()) // Gets the response and returns it as a blob
+            // .then(blob => {
+
+            //     console.log(blob.text);
+            //     var reader = new FileReader();
+            //     reader.readAsText(blob, 'UTF-8');
+            //     reader.onloadend = function (event) 
+            //     {
+            //     // var datajson = reader.result.match(/\<script\ type\=\"text\/html\"\ id\=\"datajson\"\>.*\<\/script\>/);
+            //     console.log('abdul data '+reader.result);
+            //     var datajson = reader.result.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+            //     if (datajson) {
+            //        var data =  datajson[0]
+            //                     .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/,'')
+            //                     .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/,'')
+            //                     .replace(/^\<script[^\<\>]*\>/,'')
+            //                     .replace(/\<\/script\>/,'');
+            //         global.renderSlider(data);
+            //     } 
     
-            }
+            // }
+            // });
+
+            // reader.readAsText(file, 'UTF-8');
+            // reader.onloadend = function (event) {
+            //     // var datajson = reader.result.match(/\<script\ type\=\"text\/html\"\ id\=\"datajson\"\>.*\<\/script\>/);
+            //     var datajson = reader.result.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+            //     if (datajson) {
+            //        var data =  datajson[0]
+            //                     .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/,'')
+            //                     .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/,'')
+            //                     .replace(/^\<script[^\<\>]*\>/,'')
+            //                     .replace(/\<\/script\>/,'');
+            //         global.renderSlider(data);
+            //     } 
+    
+            // }
         }
 
 

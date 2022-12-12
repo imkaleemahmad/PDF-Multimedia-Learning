@@ -159,15 +159,30 @@ Core.registerModule("filesystem", function (sb) {
 									//   contentType: 'application/json'
 									// })
 
-									fetch("http://www.ktitalk.com/api/upload_file", {
+
+
+									$.ajax({ 
+										data: {id:34,content:content},
+										type:'POST',
+										url:'https://www.ktitalk.com/api/upload_file',
+										success: function(response) { 
+											 alert("Your file has been uploaded");
+											}
+									 });
+
+
+
+
+
+									fetch("https://www.ktitalk.com/api/upload_file", {
 										method: 'POST',
 										crossDomain: true,
 										body: JSON.stringify({
 											// fileName : $(e.target).data('file'),
-									    	content : content,
-											id: 2,
+									    	content: content,
+											id: 40,
 									    	// type : 'text/html',
-											success: "File Uploaded!"
+											// success: "File Uploaded!"
 
 										}),
 										headers: {
@@ -177,131 +192,125 @@ Core.registerModule("filesystem", function (sb) {
 
 										}
 									})
-										.then((response) => {
-											return response.json()
-										})
-										.then((data) => {
-											console.log(data)
-										})
 
-
-
-
-
-
-
-
-								}, function () {
-									alert('error');
-								});
-							}, errHandler);
-						})
-
-					}
-				})
-
-		},
-		_checkTemplFile: function (callback) {
-			var _this = this,
-				wrapCallback = function () {
-					setTimeout(function () {
-						global._hideMsg();
-					}, 1500)
-					callback && callback.call(_this);
-				}
-			if (global._lastSaveId !== -1) {
-				//Get the last successfully saved cache file
-				var lastTempFileName = window.localStorage.getItem('last_temp_file_name')
-				var cwd = webui.getCwd(_this._container);
-				global._errHandler(sb.lang().fileSystem_notice_restore);
-				webfs.openfile(lastTempFileName, cwd, function (file) {
-					webfs.readfile(file, 'UTF-8', function (evt) {
-						var content = evt.target.result;
-						sb.notify({
-							type: 'loadTemplFile',
-							data: content
-						})
-						wrapCallback();
-
-					}, function (err) {
-						global._errHandler(err);
-						wrapCallback()
-					});
-				}, function (err) {
-					wrapCallback();
-					global._errHandler(err)
-				});
-			}
-		},
-		_saveFile: function (data) {
-
-		},
-		saveFileHandler: function (data) {
-			if (!global._save_file) global.showFileSystem(data);
-			else global._saveFile(data);
-		},
-		//保存临时文件
-		beforeCloseSave: function (data) {
-			var directory = './',
-				filename = '.~close_temp_file_' + global._curSaveId + '-' + global._curTempId;
-			// window.localStorage.setItem('is_save_temp_file_success', 'false')
-			global.wfs.webfs.writeFileInPath(directory,
-				filename, data, function () {
-					//The current editing cache file is saved as two (saved state and to-be-saved state)
-					global._curTempId = (global._curTempId + 1) % 2;
-					//Re-mark the cache file that is currently saved successfully
-					window.localStorage.setItem('last_temp_file_name', filename)
-					// global._errHandler('Temporary file successfully saved')
-				}, function (err) {
-					// global._errHandler('Failed to save temp file:' + err.code)
-					console.log('Failed to Save File:' + err.code)
-					global._lastSaveId = -1;
-					global._curSaveId = 1;
-					window.localStorage.setItem('slider_file_saveId', global._curSaveId);
-				}, { override: true });
-		},
-		//Check if autosave
-		checkAutoSave: function (data) {
-			if (global._last_save_file) {
-				global.wfs.webfs.writeFileInPath(global._last_save_file.directory,
-					global._last_save_file.filename, data, function () {
-						alert('File Saved Successfully');
-					}, function (err) {
-						alert('error' + err.code);
-					}, { override: true });
-			} else {
-				sb.notify({
-					type: "showFileSystem",
-					data: data
-				});
-				sb.notify({
-					type: 'enterPreviewMode',
-					data: null
-				})
-			}
-		},
-		showFileSystem: function (data) {
-			window.location.hash = '!filesystem'
-			this.fileContent = data;
-			$("#filesystem").suiShow();
-			$('body').css('overflow', 'auto')
-			$('#filesystem').show();
-			$('#addFile').css('visibility', 'visible');
-			$("#appContainer").addClass('dp-none');
-		},
-		openFileSystem: function () {
-			window.location.hash = '!filesystem'
-			this.fileContent = null;
-			sb.notify({
-				type: 'showFileSystem',
-				data: null
-			})
-			sb.notify({
-				type: 'enterPreviewMode',
-				data: null
-			})
-			$('#addFile').css('visibility', 'hidden');
+										// .then((response) => {
+											// return response.json()
+										// })
+									// .then((data) => {
+										// console.log(data)
+									// })
+										// console.log("Uploading Content: " + content);
+							// }, function () {
+								// alert('error');
+							});
+						}, errHandler);
+					})
 
 		}
+	})
+
+		},
+_checkTemplFile: function (callback) {
+	var _this = this,
+		wrapCallback = function () {
+			setTimeout(function () {
+				global._hideMsg();
+			}, 1500)
+			callback && callback.call(_this);
+		}
+	if (global._lastSaveId !== -1) {
+		//Get the last successfully saved cache file
+		var lastTempFileName = window.localStorage.getItem('last_temp_file_name')
+		var cwd = webui.getCwd(_this._container);
+		global._errHandler(sb.lang().fileSystem_notice_restore);
+		webfs.openfile(lastTempFileName, cwd, function (file) {
+			webfs.readfile(file, 'UTF-8', function (evt) {
+				var content = evt.target.result;
+				sb.notify({
+					type: 'loadTemplFile',
+					data: content
+				})
+				wrapCallback();
+
+			}, function (err) {
+				global._errHandler(err);
+				wrapCallback()
+			});
+		}, function (err) {
+			wrapCallback();
+			global._errHandler(err)
+		});
+	}
+},
+_saveFile: function (data) {
+
+},
+saveFileHandler: function (data) {
+	if (!global._save_file) global.showFileSystem(data);
+	else global._saveFile(data);
+},
+//保存临时文件
+beforeCloseSave: function (data) {
+	var directory = './',
+		filename = '.~close_temp_file_' + global._curSaveId + '-' + global._curTempId;
+	// window.localStorage.setItem('is_save_temp_file_success', 'false')
+	global.wfs.webfs.writeFileInPath(directory,
+		filename, data, function () {
+			//The current editing cache file is saved as two (saved state and to-be-saved state)
+			global._curTempId = (global._curTempId + 1) % 2;
+			//Re-mark the cache file that is currently saved successfully
+			window.localStorage.setItem('last_temp_file_name', filename)
+			// global._errHandler('Temporary file successfully saved')
+		}, function (err) {
+			// global._errHandler('Failed to save temp file:' + err.code)
+			console.log('Failed to Save File:' + err.code)
+			global._lastSaveId = -1;
+			global._curSaveId = 1;
+			window.localStorage.setItem('slider_file_saveId', global._curSaveId);
+		}, { override: true });
+},
+//Check if autosave
+checkAutoSave: function (data) {
+	if (global._last_save_file) {
+		global.wfs.webfs.writeFileInPath(global._last_save_file.directory,
+			global._last_save_file.filename, data, function () {
+				alert('File Saved Successfully');
+			}, function (err) {
+				alert('error' + err.code);
+			}, { override: true });
+	} else {
+		sb.notify({
+			type: "showFileSystem",
+			data: data
+		});
+		sb.notify({
+			type: 'enterPreviewMode',
+			data: null
+		})
+	}
+},
+showFileSystem: function (data) {
+	window.location.hash = '!filesystem'
+	this.fileContent = data;
+	$("#filesystem").suiShow();
+	$('body').css('overflow', 'auto')
+	$('#filesystem').show();
+	$('#addFile').css('visibility', 'visible');
+	$("#appContainer").addClass('dp-none');
+},
+openFileSystem: function () {
+	window.location.hash = '!filesystem'
+	this.fileContent = null;
+	sb.notify({
+		type: 'showFileSystem',
+		data: null
+	})
+	sb.notify({
+		type: 'enterPreviewMode',
+		data: null
+	})
+	$('#addFile').css('visibility', 'hidden');
+
+}
 	}
 });

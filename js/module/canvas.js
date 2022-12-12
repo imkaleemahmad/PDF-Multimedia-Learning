@@ -955,8 +955,6 @@ Core.registerModule("canvas",function(sb){
             console.log('Provided URL: '+url);
             console.log('Content URL: '+content_url);
 
-
-
             var reader = new FileReader();
             window.fetch(content_url)
             .then(res => res.blob()) // Gets the response and returns it as a blob

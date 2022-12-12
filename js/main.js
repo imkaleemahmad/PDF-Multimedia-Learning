@@ -15,7 +15,7 @@ navigator.permissions.query({ name: 'microphone' }).then(function(result) {
         // Clear after 10s
         snackbar();
     } else if (result.state == 'prompt') {
-        devicesStatus.innerHTML = 'Acept Access devices access request.';
+        devicesStatus.innerHTML = 'Accept Access devices access request.';
         // Clear after 10s
         snackbar();
     } else if (result.state == 'denied') {
@@ -91,7 +91,7 @@ let linkStyles = "display: block; padding: 15px; color: grey; text-decoration: n
     //─── FUNCTION TO CREATE AN AUDIO ELEMENT TO PLAYBACK AND DOWNLOAD RECORDING ─────
 
 function createAudioElement(blobUrl) {
-    let divStyles = "position: relative; display: grid; justify-content: flex-end; bottom: 950px; padding-bottom: 3px;padding-right: 10px;"
+    let divStyles = "position: relative; display: grid; justify-content: flex-end; bottom: 970px; padding-bottom: 3px;padding-right: 10px;"
     // Create a div element
     const divEl = document.createElement('div');
     // Assign it a class

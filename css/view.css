@@ -1,5 +1,6 @@
 #view{
     position: absolute;
+    display: contents;
     width: 155px;
     padding: auto;
     overflow-x: hidden;
@@ -37,10 +38,13 @@
 /* .frameCon:hover {cursor: pointer;z-index: 99;-webkit-transform:scale(1) translate(0px, -5%);box-shadow: 0 0 8px 1px rgba(0,0,0, 0.3);} */
 .frame-panel {padding-bottom: 10px;background-size: 99.99% 100%;background-position:center;}
 #frame-list{
-    position: absolute;
+    position: inherit;
     width: 150px;
     padding-left: 50px;
-    /*margin: auto;*/
+    max-height: -webkit-fill-available;
+    /* height: 850px; */
+    overflow: hidden auto;
+    /* margin: auto; */
     /* margin-bottom: 25px; */
     display: inline-grid;
     row-gap: 10px;

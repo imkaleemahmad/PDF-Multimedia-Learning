@@ -2489,7 +2489,7 @@ Core.registerModule("canvas",function(sb){
             $(move_n).addClass("element-container-apart-move con-move-n");
 
             //旋转控件
-            $(rotateCon).addClass('con-rotate').append(rotateLeft).append(rotateRight).attr('title', '拖拽旋转');
+            $(rotateCon).addClass('con-rotate').append(rotateLeft).append(rotateRight).attr('title', '회전하기');
             $(rotateLeft).addClass('con-rotate-elem con-rotate-left');
             $(rotateRight).addClass('con-rotate-elem con-rotate-right');
 

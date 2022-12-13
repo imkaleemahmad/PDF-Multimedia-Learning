@@ -333,7 +333,8 @@ Core.registerModule("canvas",function(sb){
                 "pasteSlider" : this.pasteSlider,
                 "enterMapEdtingMode" : this.enterMapEdtingMode,
                 "updateSliderPositionData" : this.updateSliderPositionData,
-                "renderHtmlFromWeb" : this.renderHtmlFromWeb
+                "renderHtmlFromWeb" : this.renderHtmlFromWeb,
+                "sentHtmlFileToServer": this.sentHtmlFileToServer
             });
             for (i = 0; item =  eomItems[i]; i++) {
                 item.onclick = function(e){

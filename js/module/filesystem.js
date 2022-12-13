@@ -12,6 +12,17 @@ Core.registerModule("filesystem", function (sb) {
 			global._lastSaveId = -1;
 			global._curTempId = 0;
 
+			let url = new URL(window.location.href);
+            const id = url.searchParams.get('content_id');
+			global._saveHtmlFileId = 0;
+
+			if(id !== null)
+			{
+				global._saveHtmlFileId = id;
+			}
+
+			console.log('abdul content id = '+id);
+
 			//The id of the currently open editing slide
 			var _lastSaveId = window.localStorage.getItem('slider_file_saveId');
 
@@ -28,6 +39,7 @@ Core.registerModule("filesystem", function (sb) {
 				'preSave': this.checkAutoSave,
 				'beforeCloseSave': this.beforeCloseSave,
 				'showFileSystem': this.showFileSystem,
+				'sentHtmlFileToServer': this.sentHtmlFileToServer,
 				'saveFile': this.saveFileHandler,
 				'openFileSystem': this.openFileSystem
 			});
@@ -162,7 +174,7 @@ Core.registerModule("filesystem", function (sb) {
 
 
 									$.ajax({ 
-										data: {id:34,content:content},
+										data: {id:50,content:content},
 										type:'POST',
 										url:'https://www.ktitalk.com/api/upload_file',
 										success: function(response) { 
@@ -180,7 +192,7 @@ Core.registerModule("filesystem", function (sb) {
 										body: JSON.stringify({
 											// fileName : $(e.target).data('file'),
 									    	content: content,
-											id: 40,
+											id: 55,
 									    	// type : 'text/html',
 											// success: "File Uploaded!"
 
@@ -280,14 +292,32 @@ checkAutoSave: function (data) {
 			}, { override: true });
 	} else {
 		sb.notify({
-			type: "showFileSystem",
+			type: "sentHtmlFileToServer",
 			data: data
 		});
-		sb.notify({
-			type: 'enterPreviewMode',
-			data: null
-		})
+
+		// sb.notify({
+		// 	type: "showFileSystem",
+		// 	data: data
+		// });
+		// sb.notify({
+		// 	type: 'enterPreviewMode',
+		// 	data: null
+		// })
 	}
+},
+sentHtmlFileToServer: function (data) {
+	$.ajax({ 
+		data: {id:global._saveHtmlFileId,content:data},
+		type:'POST',
+		url:'https://www.ktitalk.com/api/upload_file',
+		success: function(response) { 
+			 alert("Your file has been uploaded");
+			},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("File Not Uploaded Some error");
+			}
+	 });
 },
 showFileSystem: function (data) {
 	window.location.hash = '!filesystem'

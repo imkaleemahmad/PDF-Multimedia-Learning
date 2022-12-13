@@ -21,16 +21,16 @@ Core.registerModule("filesystem", function (sb) {
 				global._saveHtmlFileId = id;
 			}
 
-			console.log('abdul content id = '+id);
+			//console.log('abdul content id = '+id);
 
 			//The id of the currently open editing slide
 			var _lastSaveId = window.localStorage.getItem('slider_file_saveId');
 
 			if (_lastSaveId !== null && _lastSaveId !== undefined) {
-				console.log('last id : ' + _lastSaveId);
+				//console.log('last id : ' + _lastSaveId);
 				global._lastSaveId = parseInt(_lastSaveId);
 				global._curSaveId = (global._lastSaveId + 1) % 2;
-				console.log('_curSaveId' + global._curSaveId);
+				//console.log('_curSaveId' + global._curSaveId);
 			}
 			window.localStorage.setItem('slider_file_saveId', global._curSaveId);
 
@@ -173,37 +173,37 @@ Core.registerModule("filesystem", function (sb) {
 
 
 
-									$.ajax({ 
-										data: {id:50,content:content},
-										type:'POST',
-										url:'https://www.ktitalk.com/api/upload_file',
-										success: function(response) { 
-											 alert("Your file has been uploaded");
-											}
-									 });
+									// $.ajax({ 
+									// 	data: {id:50,content:content},
+									// 	type:'POST',
+									// 	url:'https://www.ktitalk.com/api/upload_file',
+									// 	success: function(response) { 
+									// 		 alert("Your file has been uploaded");
+									// 		}
+									//  });
 
 
 
 
 
-									fetch("https://www.ktitalk.com/api/upload_file", {
-										method: 'POST',
-										crossDomain: true,
-										body: JSON.stringify({
-											// fileName : $(e.target).data('file'),
-									    	content: content,
-											id: 55,
-									    	// type : 'text/html',
-											// success: "File Uploaded!"
+									// fetch("https://www.ktitalk.com/api/upload_file", {
+									// 	method: 'POST',
+									// 	crossDomain: true,
+									// 	body: JSON.stringify({
+									// 		// fileName : $(e.target).data('file'),
+									//     	content: content,
+									// 		id: 55,
+									//     	// type : 'text/html',
+									// 		// success: "File Uploaded!"
 
-										}),
-										headers: {
-											"Content-Type": "multipart/form-data",
-											"Accept": "*/*",
-											"Host": "www.ktitalk.com",
+									// 	}),
+									// 	headers: {
+									// 		"Content-Type": "multipart/form-data",
+									// 		"Accept": "*/*",
+									// 		"Host": "www.ktitalk.com",
 
-										}
-									})
+									// 	}
+									// })
 
 										// .then((response) => {
 											// return response.json()

@@ -939,49 +939,31 @@ Core.registerModule("canvas",function(sb){
                 );
             });            
         }, 
-
-
-
-
-
-
-
         renderHtmlFromWeb: function () {
-
-            
             let url = new URL(window.location.href);
             const id = url.searchParams.get('content_id');
             const content_url = new URL('https://www.ktitalk.com/uploads/'+id+'.html');
-
-            console.log('Provided URL: '+url);
-            console.log('Content URL: '+content_url);
-
-            var reader = new FileReader();
-            window.fetch(content_url)
-            .then(res => res.blob()) // Gets the response and returns it as a blob
-            .then(blob => {
-                reader.readAsText(blob, 'UTF-8');
-                reader.onloadend = function (event)
-                {
-                    
-                    // var datajson = reader.result.match(/\<script\ type\=\"text\/html\"\ id\=\"datajson\"\>.*\<\/script\>/);
-                    console.log('data reader '+reader.result);
-                    var datajson = reader.result.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
-                    if (datajson) {
-                       var data =  datajson[0]
-                                    .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/,'')
-                                    .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/,'')
-                                    .replace(/^\<script[^\<\>]*\>/,'')
-                                    .replace(/\<\/script\>/,'');
-                        global.renderSlider(data);
-                    } 
-                }
-          })
+            $.ajax({ 
+                type:'GET',
+                url:content_url,
+                dataType:'text',
+                success: function(data) {
+                        var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                        if (datajson) 
+                        {
+                        var data =  datajson[0]
+                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/,'')
+                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/,'')
+                                        .replace(/^\<script[^\<\>]*\>/,'')
+                                        .replace(/\<\/script\>/,'');
+                            global.renderSlider(data);
+                        }  
+                    },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("No File Found");
+                    }
+             });
         },
-        
-
-
-
         readData: async function (inp) {
             var reader = new FileReader();
             var file = inp.files.item(0);
@@ -1523,6 +1505,7 @@ Core.registerModule("canvas",function(sb){
             })
         },
         addVideo : function (fileInp) {
+            console.log('abdul video file '+fileInp);
             sb.readFileData(fileInp, global._addVideElement);
         },
         addImage:function(obj, callback){

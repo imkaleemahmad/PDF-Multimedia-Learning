@@ -91,15 +91,15 @@ let linkStyles = "display: block; padding: 15px; color: grey; text-decoration: n
     //─── FUNCTION TO CREATE AN AUDIO ELEMENT TO PLAYBACK AND DOWNLOAD RECORDING ─────
 
 function createAudioElement(blobUrl) {
-    let divStyles = "position: relative; display: grid; justify-content: flex-end; bottom: 970px; padding-bottom: 3px;padding-right: 10px;"
+    let divStyles = "position: relative; display: flow-root; text-align: right; bottom: 970px; padding-bottom: 3px;padding-right: 10px;"
     // Create a div element
     const divEl = document.createElement('div');
     // Assign it a class
     divEl.className = 'div-audio'
         // Create an anchor tag
-    const downloadEl = document.createElement('a');
+    // const downloadEl = document.createElement('a');
     // Give it styles
-    downloadEl.style = linkStyles;
+    // downloadEl.style = linkStyles;
     divEl.style = divStyles;
     //divEl Styles
         // divEl.style.position = 'relative'
@@ -114,10 +114,10 @@ function createAudioElement(blobUrl) {
 
     // Give it a progressive name
     // downloadEl.innerHTML = `Download - ${counter = counter + 1}`;
-    downloadEl.innerHTML = `Download`;
-    downloadEl.download = `Audio-${counter}.webm`;
+    // downloadEl.innerHTML = `Download`;
+    // download = `Audio-${counter}.webm`;
     // Define href
-    downloadEl.href = blobUrl;
+    // downloadEl.href = blobUrl;
     // Create audio element
     const audioEl = document.createElement('audio');
     // Give it a class
@@ -125,6 +125,7 @@ function createAudioElement(blobUrl) {
         // Show controls play pause etc
     audioEl.controls = true;
     // Create source
+    audioEl.style.width = '280px';
     const sourceEl = document.createElement('source');
     sourceEl.src = blobUrl;
     // Audio type
@@ -135,7 +136,7 @@ function createAudioElement(blobUrl) {
     // document.body.appendChild(downloadEl);
     // Append child
     divEl.appendChild(audioEl)
-    divEl.appendChild(downloadEl)
+    // divEl.appendChild(downloadEl)
         // Append all in the body DOM
     document.body.appendChild(divEl);
 }

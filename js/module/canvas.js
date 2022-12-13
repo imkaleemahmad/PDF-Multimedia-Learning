@@ -1598,7 +1598,7 @@ Core.registerModule("canvas",function(sb){
         addText:function(textObj){
             var obj = {
                 height:200,
-                width:300
+                width:400
             };
             var partSize = 8,dataID;
             var textBox = document.createElement("div");
@@ -1618,7 +1618,7 @@ Core.registerModule("canvas",function(sb){
                 textBox.innerHTML = textObj["value"];
             }else{
                 container.setAttribute("style", "position:absolute;left:"+((canvasX-obj.width)/2)+"px;top:"+((canvasY-obj.height)/2)+"px;");
-                textBox.setAttribute("style", "height:"+obj.height+"px;width:"+obj.width+"px;overflow:hidden;outline: none;");
+                textBox.setAttribute("style", "height:"+obj.height+"px;width:"+obj.width+"px;overflow:hidden;outline: none; padding-top:12px;");
             }
             container.style.zIndex = global._getMaxZIndex(currentSlider);
             

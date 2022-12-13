@@ -960,8 +960,8 @@ Core.registerModule("canvas",function(sb){
                         }  
                     },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert("No File Found");
-                    }
+                    //alert("File Loading Not sucessfull");
+                    },
              });
         },
         readData: async function (inp) {

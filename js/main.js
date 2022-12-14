@@ -90,7 +90,7 @@ let linkStyles = "display: block; padding: 15px; color: grey; text-decoration: n
     //
     //─── FUNCTION TO CREATE AN AUDIO ELEMENT TO PLAYBACK AND DOWNLOAD RECORDING ─────
 
-function createAudioElement(blobUrl) {
+window.createAudioElement = function (blobUrl) {
     let divStyles = "position: relative; display: flow-root; text-align: right; bottom: 970px; padding-bottom: 3px;padding-right: 10px;"
     // Create a div element
     const divEl = document.createElement('div');

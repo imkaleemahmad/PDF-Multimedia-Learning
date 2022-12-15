@@ -21,9 +21,9 @@ Core.registerModule("view",function(sb){
             '3:4'   : '5px',
             '7:10'   : '5px',
         },
-        DEFAULT_SCREEN = '1:1',
+        DEFAULT_SCREEN = '16:9',
         FRAME_X = 160,
-        FRAME_Y = 120,
+        FRAME_Y = 90,
         FRAME_SCALE_SIZE = 5,
         global,
         conf = {

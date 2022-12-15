@@ -901,7 +901,10 @@ Core.registerModule("canvas", function (sb) {
                     }
                     var ratioString = isLandscape ? (leftR+':'+rightR) : (rightR+':'+leftR);
                     global.changeScreenScale(ratioString);
-
+                    sb.notify({
+                        type: 'changeScreenScale',
+                        data: ratioString
+                    })
                 } else {
                     global.createSlider('append');
 

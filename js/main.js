@@ -77,6 +77,7 @@ const recFunction = async() => {
                         // Create a new Blob with the array created
                         let blob = new Blob(chunks, { type: 'audio/webm' });
                         // Create a Playback and pass it the blob
+                        //createAudioElement(URL.createObjectURL(blob));
                         var reader = new window.FileReader();
                         reader.readAsDataURL(blob); 
                         reader.onloadend = function() {

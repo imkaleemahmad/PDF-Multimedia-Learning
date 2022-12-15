@@ -1473,13 +1473,12 @@ Core.registerModule("canvas", function (sb) {
             return dataID;
         },
         _addVideElement: function (dataUrl, options) {
-            var video = document.createElement('video');
+            var video = document.createElement('audio');
             src = document.createElement('source');
             preCont = document.createElement('div'),
                 isPaste = options && options.isPaste;
             $(video).attr('controls', true).append(src);
             $(src).attr('type', 'video/mp4').attr('src', dataUrl).addClass('video-source');
-
             var dataId = global._addVideoConfig(preCont, video, options);
             $(video).on('loadedmetadata', function () {
                 var sizeObj = {
@@ -1491,7 +1490,6 @@ Core.registerModule("canvas", function (sb) {
                     , type = null;
 
                 sizeObj = sb.fixedImgSize(sizeObj, canvasX, canvasY);
-
                 newContainerFunc(sizeObj, partSize, null, {
                     'container': preCont,
                     'type': type,

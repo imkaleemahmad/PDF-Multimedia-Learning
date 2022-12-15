@@ -11,17 +11,15 @@ Core.registerModule("canvas", function (sb) {
         ANIMATION_LABEL = curLanguage.anim_label,
         SCREEN_SIZE_MAP = {
             '16:9': { x: 960, y: 540 },
-            '8:5': { x: 960, y: 600 },
-            '6:5': { x: 600, y: 500 },
-            '5:3': { x: 600, y: 360 },
             '4:3': { x: 800, y: 600 },
-            '2:1': { x: 1000, y: 500 },
-            '1:1': { x: 595, y: 842 },
-            '3:1': { x: 842, y: 595 }
+            '10:7': { x: 960, y: 678 },
+            '9:16': { x: 485, y: 860 },
+            '3:4': { x: 600, y: 800 },
+            '7:10': { x: 594, y: 840 },
         },
         DATASET_PRE = 'slider',
         DEFAULT_SLIDE_TYPE = 'slide',
-        DEFAULT_SCREEN = '1:1',
+        DEFAULT_SCREEN = '16:9',
         canvasX = 1200,
         canvasY = 600;
 
@@ -863,7 +861,6 @@ Core.registerModule("canvas", function (sb) {
             // return binary representation
             return atob(pieces.join(','));
         },
-
         getPdfFileContent: function (file) {
             const reader = new FileReader();
             return new Promise((resolve, reject) => {
@@ -887,14 +884,24 @@ Core.registerModule("canvas", function (sb) {
                 const img = await global.HandlePdfLoad(pdf, options, page);
                 if (page == 1) {
                     await global.addPdfPageToImg(img.image_encoding);
-                    console.log(img.page_width)
-                    if (img.page_width > img.page_height) // LandScape
+
+                    [width, height] = [img.page_width, img.page_height]
+                    var isLandscape = true;
+                    if(height > width)
+                        isLandscape = false;
+                    var ratio = isLandscape ? (width / height) : (height / width);
+                    var leftR = '16', rightR='9';
+                    if(ratio < 1.38)
                     {
-                        global.changeScreenScale('3:1');
+                        leftR = '4'; rightR='3';
                     }
-                    else {
-                        global.changeScreenScale('1:1');
+                    else if(ratio < 1.55)
+                    {
+                        leftR = '10'; rightR='7';
                     }
+                    var ratioString = isLandscape ? (leftR+':'+rightR) : (rightR+':'+leftR);
+                    global.changeScreenScale(ratioString);
+
                 } else {
                     global.createSlider('append');
 

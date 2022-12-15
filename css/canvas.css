@@ -169,14 +169,14 @@
 #element-operate-menu .close-menu {top: -10px;right: -10px;}
 #element-attrSetting-menu{
 
-    position: absolute;
+    position: fixed;
     width:500px;
     left:0px;
     top:0px;
     display: none;
     padding: 10px 0px;
     font-size: 12px;
-    z-index: 998;
+    z-index: 997;
 
 }
 #element-attrSetting-menu .move{

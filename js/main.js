@@ -48,6 +48,11 @@ var options = {
     // Download counter
 let counter = 0;
 
+var global = {};
+function setGlobalRefInMainJs(globalInstance){
+global = globalInstance;
+}
+
 //
 // ─── REC FUNCTION ───────────────────────────────────────────────────────────────
 
@@ -72,7 +77,14 @@ const recFunction = async() => {
                         // Create a new Blob with the array created
                         let blob = new Blob(chunks, { type: 'audio/webm' });
                         // Create a Playback and pass it the blob
-                        createAudioElement(URL.createObjectURL(blob))
+                        var reader = new window.FileReader();
+                        reader.readAsDataURL(blob); 
+                        reader.onloadend = function() {
+                        base64 = reader.result;
+                        base64 = base64.split(',')[1];
+                        var stringToPass = "data:audio/mpeg;base64," +base64;
+                        global._addVideElement(stringToPass)
+                        } 
                     }
                 }
                 // Start Recording in 1s

@@ -39,8 +39,8 @@ Core.registerModule("canvas", function (sb) {
         rightMenuBtn; //右键选中标志
     return {
         init: function () {
-
             global = this;
+            setGlobalRefInMainJs(this);
             //初始设置幻灯片的长宽
             var sMap = SCREEN_SIZE_MAP[DEFAULT_SCREEN];
             canvasX = sMap.x;
@@ -1504,7 +1504,6 @@ Core.registerModule("canvas", function (sb) {
             })
         },
         addVideo: function (fileInp) {
-            console.log('abdul video file ' + fileInp);
             sb.readFileData(fileInp, global._addVideElement);
         },
         addImage: function (obj, callback) {

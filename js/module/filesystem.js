@@ -20,9 +20,6 @@ Core.registerModule("filesystem", function (sb) {
 			{
 				global._saveHtmlFileId = id;
 			}
-
-			//console.log('abdul content id = '+id);
-
 			//The id of the currently open editing slide
 			var _lastSaveId = window.localStorage.getItem('slider_file_saveId');
 

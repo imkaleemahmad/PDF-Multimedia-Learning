@@ -157,10 +157,10 @@
 }
 #element-operate-menu{
 
-    position: absolute;
+    position: fixed;
     width:150px;
-    left:0px;
-    top:0px;
+    /* left:870px;
+    top:0px; */
 
     display: none;
     padding: 10px 0px;

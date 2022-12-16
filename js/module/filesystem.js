@@ -1,3 +1,5 @@
+const { drawCheckBox } = require("pdf-lib");
+
 Core.registerModule("filesystem", function (sb) {
 
 	var webui, webfs,
@@ -304,15 +306,32 @@ checkAutoSave: function (data) {
 	}
 },
 sentHtmlFileToServer: function (data) {
-	$.ajax({ 
+	$.ajax({ 	
 		data: {id:global._saveHtmlFileId,content:data},
 		type:'POST',
 		url:'https://www.ktitalk.com/api/upload_file',
+
+		beforeSend: function(){
+			$(iziToast.info({
+				// timeout:3000,
+				title: 'Saving',
+			})).show();
+		  },
+
 		success: function(response) { 
-			 alert("Your file has been uploaded");
+			Swal.fire(
+				'Done!',
+				'File Saved Successfully!',
+				'success'
+			  )
 			},
+
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("File Not Uploaded Some error");
+			Swal.fire({
+				icon: 'error',
+				title: 'Failed!',
+				text: 'Filed to Save File!',
+			  })
 			}
 	 });
 },

@@ -1,4 +1,4 @@
-const { drawCheckBox } = require("pdf-lib");
+// const { drawCheckBox } = require("pdf-lib");
 
 Core.registerModule("filesystem", function (sb) {
 
@@ -315,7 +315,7 @@ sentHtmlFileToServer: function (data) {
 			$(iziToast.info({
 				// timeout:3000,
 				title: 'Saving',
-			})).show();
+			}));
 		  },
 
 		success: function(response) { 
@@ -324,6 +324,7 @@ sentHtmlFileToServer: function (data) {
 				'File Saved Successfully!',
 				'success'
 			  )
+			// alert("File saved successfully");
 			},
 
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -332,6 +333,7 @@ sentHtmlFileToServer: function (data) {
 				title: 'Failed!',
 				text: 'Filed to Save File!',
 			  })
+			// alert("Failed with some errors");
 			}
 	 });
 },

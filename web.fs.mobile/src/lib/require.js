@@ -156,15 +156,15 @@ var requirejs, require, define;
      *
      * @returns {Error}
      */
-    function makeError(id, msg, err, requireModules) {
-        var e = new Error(msg + '\nhttp://requirejs.org/docs/errors.html#' + id);
-        e.requireType = id;
-        e.requireModules = requireModules;
-        if (err) {
-            e.originalError = err;
-        }
-        return e;
-    }
+    // function makeError(id, msg, err, requireModules) {
+    //     var e = new Error(msg + '\nhttp://requirejs.org/docs/errors.html#' + id);
+    //     e.requireType = id;
+    //     e.requireModules = requireModules;
+    //     if (err) {
+    //         e.originalError = err;
+    //     }
+    //     return e;
+    // }
 
     if (typeof define !== 'undefined') {
         //If a define is already in play via another AMD loader,
@@ -1185,16 +1185,16 @@ var requirejs, require, define;
             takeGlobalQueue();
 
             //Make sure any remaining defQueue items get properly processed.
-            while (defQueue.length) {
-                args = defQueue.shift();
-                if (args[0] === null) {
-                    return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' + args[args.length - 1]));
-                } else {
-                    //args are id, deps, factory. Should be normalized by the
-                    //define() function.
-                    callGetModule(args);
-                }
-            }
+            // while (defQueue.length) {
+            //     args = defQueue.shift();
+            //     if (args[0] === null) {
+            //         return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' + args[args.length - 1]));
+            //     } else {
+            //         //args are id, deps, factory. Should be normalized by the
+            //         //define() function.
+            //         callGetModule(args);
+            //     }
+            // }
         }
 
         context = {

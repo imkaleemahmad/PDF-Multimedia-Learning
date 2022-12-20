@@ -327,7 +327,7 @@
                                     <!-- Templates Dropdown Start -->
 
                                     <style>
-                                        .dropbtn {
+                                        .dropbtn2 {
                                             background-color: transparent;
                                             color: transparent;
                                             /* padding: 16px; */
@@ -336,13 +336,13 @@
                                             border: none;
                                         }
 
-                                        .dd {
+                                        .dd2 {
                                             position: absolute;
                                             /* display: inline-block; */
                                         }
 
-                                        .dd-content {
-                                            display: grid;
+                                        .dd2-content {
+                                            display: none;
                                             position: absolute;
                                             background-color: #f1f1f1;
                                             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -359,62 +359,257 @@
                                                                   display: block;
                                                                 } */
 
-                                        .dd-content a:hover {
+                                        .dd2-content a:hover {
                                             background-color: #ddd;
                                         }
 
-                                        /* .dd:hover .dd-content {
-                                            display: flex;
-                                        } */
-
-                                        .dd:hover .dropbtn {
-                                            background-color: transparent;
+                                        .dd2:hover .dd2-content {
+                                            display: grid;
                                         }
 
-                                        img {
-                                            border: 1px solid #ddd;
-                                            /* Gray border */
-                                            border-radius: 4px;
-                                            /* Rounded border */
-                                            padding: 5px;
-                                            /* Some padding */
-                                            width: 150px;
-                                            /* Set a small width */
+                                        .dd2:hover .dropbtn2 {
+                                            background-color: transparent;
                                         }
 
                                         /* Add a hover effect (blue shadow) */
                                         img:hover {
-                                            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+                                            box-shadow: 0 0 2px 2px rgba(0, 140, 186, 0.5);
+                                            padding: 2px;
+                                            border-radius: 15px;
+                                        }
+
+                                        button {
+                                            border: none;
                                         }
                                     </style>
-                                    <div style="position: absolute" class="dd">
-                                        <button class="dropbtn">DDO</button>
-                                        <div class="dd-content">
-                                            <div><img
-                                                    src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-1-icon.png"
-                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></div>
-                                            <div><img
-                                                    src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-2-icon.png"
-                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></div>
-                                            <div><img
-                                                    src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-3-icon.png"
-                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></div>
 
-                                            <div><img
+
+                                    <!-- AJAX REQUESTS FOR METHOD:GET TEMPLATES (START) -->
+
+
+
+                                    <div style="position: absolute" class="dd2">
+                                        <button class="dropbtn2">DDO</button>
+                                        <div class="dd2-content">
+                                            <button onclick="temp1();">
+                                                <script>
+                                                    function temp1(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/1.html',
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                <img src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-1-icon.png"
+                                                    alt="" style="height: 100px; width: 100px; border: 10px;">
+                                            </button>
+                                            <button onclick="temp2();">
+                                                <script>
+                                                    function temp2(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/2.html',
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                <img
+                                                    src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-2-icon.png"
+                                                    alt="" style="height: 100px; width: 100px; border: 10px;">
+                                                </button>
+                                            <button  onclick="temp3();">
+                                                <script>
+                                                    function temp3(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/3.html',
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                <img
+                                                    src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-3-icon.png"
+                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></button>
+
+                                            <button  onclick="temp4();">
+                                                <script>
+                                                    function temp4(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/4.html',
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                <img
                                                     src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-4-icon.png"
-                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></div>
-                                            <div><img
+                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></button>
+                                            <button  onclick="temp5();">
+                                                <script>
+                                                    function temp5(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/5.html',
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                <img
                                                     src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-5-icon.png"
-                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></div>
-                                            <div><img
+                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></button>
+                                            <button  onclick="temp6();">
+                                                <script>
+                                                    function temp6(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/6.html',
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                <img
                                                     src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-6-icon.png"
-                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></div>
-                                            <div><img
+                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></button>
+                                            <button  onclick="temp7();">
+                                                <script>
+                                                    function temp7(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/7.html',
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                <img
                                                     src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-7-icon.png"
-                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></div>
-                                            <div><img
+                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></button>
+                                            <button  onclick="temp8();">
+                                                <script>
+                                                    function temp8(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/8.html',
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+
+
+
+                                                <!-- AJAX REQUESTS FOR METHOD:GET TEMPLATES (END) -->
+
+
+
+
+
+                                                <img
                                                     src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Numbers-8-icon.png"
-                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></div>
+                                                    alt="" style="height: 100px; width: 100px; border: 10px;"></button>
                                         </div>
                                     </div>
 
@@ -431,7 +626,8 @@
                                         <path
                                             d="M4 6v-1a1 1 0 0 1 1 -1h1m5 0h2m5 0h1a1 1 0 0 1 1 1v1m0 5v2m0 5v1a1 1 0 0 1 -1 1h-1m-5 0h-2m-5 0h-1a1 1 0 0 1 -1 -1v-1m0 -5v-2m0 -5">
                                         </path>
-                                    </svg>Templates</a>
+                                    </svg>Templates
+                                </a>
 
 
 

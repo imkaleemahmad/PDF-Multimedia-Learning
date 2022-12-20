@@ -336,8 +336,8 @@ sentHtmlFileToServer: function (data) {
 				'File Saved Successfully!',
 				'success'
 			  )
-			  console.log('abdul file saved = '+response);
-			alert("File saved successfully");
+			//   console.log('abdul file saved = '+response);
+			// alert("File saved successfully");
 			},
 
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -346,7 +346,7 @@ sentHtmlFileToServer: function (data) {
 				title: 'Failed!',
 				text: 'Filed to Save File!',
 			  })
-			alert("Failed with some errors");
+			// alert("Failed with some errors");
 			}
 	 });
 },

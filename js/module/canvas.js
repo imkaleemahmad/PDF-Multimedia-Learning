@@ -1483,7 +1483,7 @@ Core.registerModule("canvas", function (sb) {
             return dataID;
         },
         _addVideElement: function (dataUrl, options) {
-            var video = document.createElement('audio');
+            var video = document.createElement('video');
             src = document.createElement('source');
             preCont = document.createElement('div'),
                 isPaste = options && options.isPaste;

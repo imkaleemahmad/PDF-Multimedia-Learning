@@ -260,7 +260,7 @@ Core.registerModule("view",function(sb){
          */
         showFrame:function(frameID){
             var curr;
-            console.log('will show : ' + frameID);
+            //console.log('will show : ' + frameID);
             if(frameID&&frames[frameID]){
                 //currentFrame = frameID;
                 //若为第一个帧，显示该帧所在的组

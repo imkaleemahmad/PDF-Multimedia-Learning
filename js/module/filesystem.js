@@ -16,12 +16,23 @@ Core.registerModule("filesystem", function (sb) {
 
 			let url = new URL(window.location.href);
             const id = url.searchParams.get('content_id');
+            const template_no = url.searchParams.get('template_no');
 			global._saveHtmlFileId = 0;
+			global._isTemplateFile = false;
 
 			if(id !== null)
 			{
+				console.log('abdul this is not a template now ');
 				global._saveHtmlFileId = id;
 			}
+			else if(id == null && template_no !== null)
+			{
+				global._isTemplateFile = true;
+				global._saveHtmlFileId = template_no;
+				console.log('abdul this is template now ');
+			}
+
+
 			//The id of the currently open editing slide
 			var _lastSaveId = window.localStorage.getItem('slider_file_saveId');
 
@@ -306,11 +317,12 @@ checkAutoSave: function (data) {
 	}
 },
 sentHtmlFileToServer: function (data) {
+	var param_data = (global._isTemplateFile)? {template_no:global._saveHtmlFileId,content:data} : {id:global._saveHtmlFileId,content:data};
+	var param_url = (global._isTemplateFile)? 'https://www.ktitalk.com/api/update_category_template' : 'https://www.ktitalk.com/api/upload_file';
 	$.ajax({ 	
-		data: {id:global._saveHtmlFileId,content:data},
+		data: param_data,
 		type:'POST',
-		url:'https://www.ktitalk.com/api/upload_file',
-
+		url: param_url,
 		beforeSend: function(){
 			$(iziToast.info({
 				// timeout:3000,
@@ -324,7 +336,8 @@ sentHtmlFileToServer: function (data) {
 				'File Saved Successfully!',
 				'success'
 			  )
-			// alert("File saved successfully");
+			  console.log('abdul file saved = '+response);
+			alert("File saved successfully");
 			},
 
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -333,7 +346,7 @@ sentHtmlFileToServer: function (data) {
 				title: 'Failed!',
 				text: 'Filed to Save File!',
 			  })
-			// alert("Failed with some errors");
+			alert("Failed with some errors");
 			}
 	 });
 },

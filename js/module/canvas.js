@@ -949,10 +949,43 @@ Core.registerModule("canvas", function (sb) {
                 );
             });
         },
+        getTemplateFileFromWeb: function (template_no) {
+            const content_url = new URL('https://www.ktitalk.com/uploads/templates/' + template_no + '.html');
+            $.ajax({
+                type: 'GET',
+                url: content_url,
+                dataType: 'text',
+                success: function (data) {
+                    var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                    if (datajson) {
+                        var data = datajson[0]
+                            .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                            .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                            .replace(/^\<script[^\<\>]*\>/, '')
+                            .replace(/\<\/script\>/, '');
+                        global.renderSlider(data);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("File Loading Not sucessfull");
+                },
+            });
+        },
         renderHtmlFromWeb: function () {
             let url = new URL(window.location.href);
             const id = url.searchParams.get('content_id');
-            const content_url = new URL('https://www.ktitalk.com/uploads/' + id + '.html');
+            const template_no = url.searchParams.get('template_no');
+            var content_url = "";
+
+            if(id !== null)
+            {
+                content_url = new URL('https://www.ktitalk.com/uploads/' + id + '.html');
+            }
+            else if(template_no !== null)
+            {
+                content_url = new URL('https://www.ktitalk.com/uploads/templates/' + template_no + '.html');
+            }
+
             $.ajax({
                 type: 'GET',
                 url: content_url,

@@ -143,18 +143,18 @@ Core.registerModule("filesystem", function (sb) {
 								suffix = 'html',
 								content = _this.fileContent || $('#fileContentInp').val();
 
-							webui.writeFile(fileName + '.' + suffix, content, _this._container, function (file) {
-								var path = file.toURL(),
-									pathFrags = path.split('/'),
-									filename = pathFrags.pop(),
-									directory = pathFrags.join('/');
+							// webui.writeFile(fileName + '.' + suffix, content, _this._container, function (file) {
+							// 	var path = file.toURL(),
+							// 		pathFrags = path.split('/'),
+							// 		filename = pathFrags.pop(),
+							// 		directory = pathFrags.join('/');
 
-								global._last_save_file = {
-									'filename': filename,
-									'directory': directory
-								}
-								$('#fileInpBox').suiHide();
-							}, errHandler);
+							// 	global._last_save_file = {
+							// 		'filename': filename,
+							// 		'directory': directory
+							// 	}
+							// 	$('#fileInpBox').suiHide();
+							// }, errHandler);
 						})
 						//Show delete button
 						$(document.body).on('click', '#showDeleteIcon', function () {
@@ -293,28 +293,29 @@ beforeCloseSave: function (data) {
 },
 //Check if autosave
 checkAutoSave: function (data) {
-	if (global._last_save_file) {
-		global.wfs.webfs.writeFileInPath(global._last_save_file.directory,
-			global._last_save_file.filename, data, function () {
-				alert('File Saved Successfully');
-			}, function (err) {
-				alert('error' + err.code);
-			}, { override: true });
-	} else {
-		sb.notify({
-			type: "sentHtmlFileToServer",
-			data: data
-		});
+	sb.notify({
+		type: "sentHtmlFileToServer",
+		data: data
+	});
+	// if (global._last_save_file) {
+	// 	global.wfs.webfs.writeFileInPath(global._last_save_file.directory,
+	// 		global._last_save_file.filename, data, function () {
+	// 			alert('File Saved Successfully');
+	// 		}, function (err) {
+	// 			alert('error' + err.code);
+	// 		}, { override: true });
+	// } else {
 
-		// sb.notify({
-		// 	type: "showFileSystem",
-		// 	data: data
-		// });
-		// sb.notify({
-		// 	type: 'enterPreviewMode',
-		// 	data: null
-		// })
-	}
+
+	// 	// sb.notify({
+	// 	// 	type: "showFileSystem",
+	// 	// 	data: data
+	// 	// });
+	// 	// sb.notify({
+	// 	// 	type: 'enterPreviewMode',
+	// 	// 	data: null
+	// 	// })
+	// }
 },
 sentHtmlFileToServer: function (data) {
 	var param_data = (global._isTemplateFile)? {template_no:global._saveHtmlFileId,content:data} : {id:global._saveHtmlFileId,content:data};

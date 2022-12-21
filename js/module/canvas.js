@@ -990,6 +990,12 @@ Core.registerModule("canvas", function (sb) {
                 type: 'GET',
                 url: content_url,
                 dataType: 'text',
+                // beforeSend: function(){
+                //     $(iziToast.info({
+                //         // timeout:3000,
+                //         title: 'Loading',
+                //     }));
+                //   },
                 success: function (data) {
                     var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
                     if (datajson) {

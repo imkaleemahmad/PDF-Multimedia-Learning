@@ -748,7 +748,7 @@ Core.registerModule("canvas", function (sb) {
         },
         renderElement: function (data) {
             var elem;
-            if (data.type === "a") {
+            if (data.type === "DIV") {
                 sb.notify({
                     type: "addText",
                     data: {

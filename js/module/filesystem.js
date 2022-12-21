@@ -10,9 +10,9 @@ Core.registerModule("filesystem", function (sb) {
 			//initial global var
 			var _this = this;
 			global = this;
-			//global._curSaveId = 1;
-			//global._lastSaveId = -1;
-			//global._curTempId = 0;
+			global._curSaveId = 1;
+			global._lastSaveId = -1;
+			global._curTempId = 0;
 
 			let url = new URL(window.location.href);
             const id = url.searchParams.get('content_id');
@@ -34,15 +34,15 @@ Core.registerModule("filesystem", function (sb) {
 
 
 			//The id of the currently open editing slide
-			// var _lastSaveId = window.localStorage.getItem('slider_file_saveId');
+			var _lastSaveId = window.localStorage.getItem('slider_file_saveId');
 
-			// if (_lastSaveId !== null && _lastSaveId !== undefined) {
-			// 	//console.log('last id : ' + _lastSaveId);
-			// 	global._lastSaveId = parseInt(_lastSaveId);
-			// 	global._curSaveId = (global._lastSaveId + 1) % 2;
-			// 	//console.log('_curSaveId' + global._curSaveId);
-			// }
-			// window.localStorage.setItem('slider_file_saveId', global._curSaveId);
+			if (_lastSaveId !== null && _lastSaveId !== undefined) {
+				//console.log('last id : ' + _lastSaveId);
+				global._lastSaveId = parseInt(_lastSaveId);
+				global._curSaveId = (global._lastSaveId + 1) % 2;
+				//console.log('_curSaveId' + global._curSaveId);
+			}
+			window.localStorage.setItem('slider_file_saveId', global._curSaveId);
 
 			_.bindAll(this);
 			sb.listen({
@@ -143,18 +143,18 @@ Core.registerModule("filesystem", function (sb) {
 								suffix = 'html',
 								content = _this.fileContent || $('#fileContentInp').val();
 
-							// webui.writeFile(fileName + '.' + suffix, content, _this._container, function (file) {
-							// 	var path = file.toURL(),
-							// 		pathFrags = path.split('/'),
-							// 		filename = pathFrags.pop(),
-							// 		directory = pathFrags.join('/');
+							webui.writeFile(fileName + '.' + suffix, content, _this._container, function (file) {
+								var path = file.toURL(),
+									pathFrags = path.split('/'),
+									filename = pathFrags.pop(),
+									directory = pathFrags.join('/');
 
-							// 	global._last_save_file = {
-							// 		'filename': filename,
-							// 		'directory': directory
-							// 	}
-							// 	$('#fileInpBox').suiHide();
-							// }, errHandler);
+								global._last_save_file = {
+									'filename': filename,
+									'directory': directory
+								}
+								$('#fileInpBox').suiHide();
+							}, errHandler);
 						})
 						//Show delete button
 						$(document.body).on('click', '#showDeleteIcon', function () {
@@ -273,23 +273,23 @@ saveFileHandler: function (data) {
 },
 //保存临时文件
 beforeCloseSave: function (data) {
-	// var directory = './',
-	// 	filename = '.~close_temp_file_' + global._curSaveId + '-' + global._curTempId;
-	// // window.localStorage.setItem('is_save_temp_file_success', 'false')
-	// global.wfs.webfs.writeFileInPath(directory,
-	// 	filename, data, function () {
-	// 		//The current editing cache file is saved as two (saved state and to-be-saved state)
-	// 		global._curTempId = (global._curTempId + 1) % 2;
-	// 		//Re-mark the cache file that is currently saved successfully
-	// 		window.localStorage.setItem('last_temp_file_name', filename)
-	// 		// global._errHandler('Temporary file successfully saved')
-	// 	}, function (err) {
-	// 		// global._errHandler('Failed to save temp file:' + err.code)
-	// 		console.log('Failed to Save File:' + err.code)
-	// 		//global._lastSaveId = -1;
-	// 		//global._curSaveId = 1;
-	// 		//window.localStorage.setItem('slider_file_saveId', global._curSaveId);
-	// 	}, { override: true });
+	var directory = './',
+		filename = '.~close_temp_file_' + global._curSaveId + '-' + global._curTempId;
+	// window.localStorage.setItem('is_save_temp_file_success', 'false')
+	global.wfs.webfs.writeFileInPath(directory,
+		filename, data, function () {
+			//The current editing cache file is saved as two (saved state and to-be-saved state)
+			global._curTempId = (global._curTempId + 1) % 2;
+			//Re-mark the cache file that is currently saved successfully
+			window.localStorage.setItem('last_temp_file_name', filename)
+			// global._errHandler('Temporary file successfully saved')
+		}, function (err) {
+			//global._errHandler('Failed to save temp file:' + err.code)
+			//console.log('Failed to Save File:' + err.code)
+			global._lastSaveId = -1;
+			global._curSaveId = 1;
+			window.localStorage.setItem('slider_file_saveId', global._curSaveId);
+		}, { override: true });
 },
 //Check if autosave
 checkAutoSave: function (data) {

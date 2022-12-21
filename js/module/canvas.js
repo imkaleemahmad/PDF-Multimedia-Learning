@@ -1005,7 +1005,6 @@ Core.registerModule("canvas", function (sb) {
                             .replace(/^\<script[^\<\>]*\>/, '')
                             .replace(/\<\/script\>/, '');
                         global.renderSlider(data);
-                        console.log("Content Loaded " + datajson);
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {

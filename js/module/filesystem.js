@@ -240,29 +240,29 @@ _checkTemplFile: function (callback) {
 			}, 1500)
 			callback && callback.call(_this);
 		}
-	// if (global._lastSaveId !== -1) {
-	// 	//Get the last successfully saved cache file
-	// 	var lastTempFileName = window.localStorage.getItem('last_temp_file_name')
-	// 	var cwd = webui.getCwd(_this._container);
-	// 	global._errHandler(sb.lang().fileSystem_notice_restore);
-	// 	webfs.openfile(lastTempFileName, cwd, function (file) {
-	// 		webfs.readfile(file, 'UTF-8', function (evt) {
-	// 			var content = evt.target.result;
-	// 			sb.notify({
-	// 				type: 'loadTemplFile',
-	// 				data: content
-	// 			})
-	// 			wrapCallback();
+	if (global._lastSaveId !== -1) {
+		//Get the last successfully saved cache file
+		var lastTempFileName = window.localStorage.getItem('last_temp_file_name')
+		var cwd = webui.getCwd(_this._container);
+		global._errHandler(sb.lang().fileSystem_notice_restore);
+		webfs.openfile(lastTempFileName, cwd, function (file) {
+			webfs.readfile(file, 'UTF-8', function (evt) {
+				var content = evt.target.result;
+				sb.notify({
+					type: 'loadTemplFile',
+					data: content
+				})
+				wrapCallback();
 
-	// 		}, function (err) {
-	// 			global._errHandler(err);
-	// 			wrapCallback()
-	// 		});
-	// 	}, function (err) {
-	// 		wrapCallback();
-	// 		global._errHandler(err)
-	// 	});
-	// }
+			}, function (err) {
+				global._errHandler(err);
+				wrapCallback()
+			});
+		}, function (err) {
+			wrapCallback();
+			global._errHandler(err)
+		});
+	}
 },
 _saveFile: function (data) {
 

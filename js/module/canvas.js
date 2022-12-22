@@ -2162,6 +2162,7 @@ Core.registerModule("canvas", function (sb) {
                     copyParams.codeType = pasteElem.file.getOption('mode');
                 }
             }
+            cancelElementOperateMenuFunc();
         },
         pasteElement: function () {
 
@@ -2174,7 +2175,7 @@ Core.registerModule("canvas", function (sb) {
 
                 }
                 //textArea
-                else if (copyParams["type"] == "a") {
+                else if (copyParams["type"] == "DIV") {
                     var textElementId = addTextFunc(copyParams);
                     global.setSelect(textElementId);
                 }

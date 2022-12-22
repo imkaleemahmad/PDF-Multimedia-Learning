@@ -542,7 +542,7 @@ Core.registerModule("view",function(sb){
                     type:"changeFrame",
                     data:frameID
                 });
-                console.log(SframeNum, frameID);
+                // console.log(SframeNum, frameID);
             },false);
             $(frame).on('mousedown ', function (evt) {
                 if (evt.button === 2) {

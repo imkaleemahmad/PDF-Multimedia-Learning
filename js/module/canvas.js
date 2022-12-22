@@ -1209,7 +1209,7 @@ Core.registerModule("canvas", function (sb) {
                 //img.src||video-srouce.src||textbox.src
                 sliderElement.value = data["data"].src || $(data["data"]).find('.video-source').attr('src') || encodeURIComponent(data["data"].innerHTML);
                 if (sliderElement.type == "IMG") {
-                    console.log("this is img")
+                    // console.log("this is img")
                     window.onload = function () {
                         sliderElement.panelAtt = sb.find(".element-panel", data["container"]).getAttribute("style");
                     }

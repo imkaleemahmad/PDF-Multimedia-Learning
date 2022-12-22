@@ -22,7 +22,7 @@ Core.registerModule("filesystem", function (sb) {
 
 			if(id !== null)
 			{
-				console.log('abdul this is not a template now ');
+				// console.log('abdul this is not a template now ');
 				global._saveHtmlFileId = id;
 			}
 			else if(id == null && template_no !== null)

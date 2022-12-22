@@ -153,7 +153,7 @@ var localConfig = {
 		'en' : {
 			//tool bar
 			toolBar_save 			: "Save File",
-			toolBar_import 			: "Import File",
+			toolBar_import 			: "Open File",
 			toolBar_openFileSystem 	: "Open Storage Filesystem",
 			toolBar_preview 		: "Preview Current Presentation",
 			toolBar_setAnimation 	: "Set Frame Transition Animation",
@@ -161,7 +161,7 @@ var localConfig = {
 			toolBar_addImage 		: "Add an Image",
 			toolBar_addText 		: "Add a Text-Box",
 			toolBar_addCode 		: "Add a High-Contrast Code Editor",
-			toolBar_changeScale 	: "Change Current Presentation Screen Size",
+			toolBar_changeScale 	: "Change Current Slider Size",
 			toolBar_help 			: 'Intro-Helping',
 			toolBar_mapEditing 		: "Drag and Drop to Edit Frame Position",
 			// animation

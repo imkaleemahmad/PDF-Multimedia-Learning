@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,
             shrink-to-fit=no" />
             
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0, proxy-revalidate, s-maxage=0" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Cache-Control" content="private ,no-cache" />
+    <meta http-equiv="Cache-Control" content="public, no-store" />
+    <meta http-equiv="pregma" content="no-cache"/>
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
     <title>Editor</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet"
@@ -106,8 +107,7 @@
         <nav style="--bs-navbar-padding-y:0;" class="navbar navbar-black navbar-expand bg-black
                 navigation-clean">
             <div class="container">
-                <a style="color: white; font-family: Noto Serif Korean; font-size: 14px;" class="navbar-brand"
-                    href="#">케이티톡 한국어 교안</a>
+                <a style="color: white; font-family: Noto Serif Korean; font-size: 14px;" class="navbar-brand">케이티톡 한국어 교안</a>
 
             </div>
         </nav>
@@ -175,7 +175,7 @@
                             <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="height: 35px; font-size: 12px">
+                                    custom-btn light-btn"   role="button" style="height: 35px; font-size: 12px">
                                 <div id="tool-openFileSystem" class="tool-app" data-title="toolBar_openFileSystem"
                                     style="
                                         background-image: none;
@@ -194,7 +194,7 @@
                             <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="height: 35px; font-size: 12px">
+                                    custom-btn light-btn"   role="button" style="height: 35px; font-size: 12px">
                                 <!-- files toolbar Dropdown Start -->
                                 <!--
 
@@ -272,7 +272,7 @@
                                 <a class="d-print-inline-block d-sm-inline
                                         d-md-inline d-lg-inline-block
                                         d-xl-inline-block d-xxl-inline-block
-                                        custom-btn light-btn" href="#" role="button"
+                                        custom-btn light-btn"   role="button"
                                     style="height: 35px; font-size: 12px">
 
 
@@ -298,7 +298,7 @@
 
 
                                 <a class="d-print-inline-block d-sm-inline d-md-inline d-lg-inline-block d-xl-inline-block d-xxl-inline-block custom-btn light-btn"
-                                    href="#" role="button" style="width: 60px;height: 34px;font-size: 12px;">
+                                      role="button" style="width: 60px;height: 34px;font-size: 12px;">
 
                                     <!-- Templates Dropdown Start -->
 
@@ -390,7 +390,7 @@
                                                     function temp1(){
                                                    $.ajax({
                                                             type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/1.html',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/1.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
@@ -415,7 +415,7 @@
                                                     function temp2(){
                                                    $.ajax({
                                                             type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/2.html',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/2.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
@@ -440,7 +440,7 @@
                                                     function temp3(){
                                                    $.ajax({
                                                             type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/3.html',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/3.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
@@ -465,7 +465,7 @@
                                                     function temp4(){
                                                    $.ajax({
                                                             type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/4.html',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/4.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
@@ -490,7 +490,7 @@
                                                     function temp5(){
                                                    $.ajax({
                                                             type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/5.html',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/5.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
@@ -515,7 +515,7 @@
                                                     function temp6(){
                                                    $.ajax({
                                                             type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/6.html',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/6.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
@@ -540,7 +540,7 @@
                                                     function temp7(){
                                                    $.ajax({
                                                             type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/7.html',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/7.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
@@ -565,7 +565,7 @@
                                                     function temp8(){
                                                    $.ajax({
                                                             type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/8.html',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/8.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
@@ -616,7 +616,7 @@
                                 <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px">
 
                                     <i class="material-icons" style="
@@ -643,7 +643,7 @@
                                 <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button"
+                                    custom-btn light-btn"   role="button"
                                     style="height: 35px; font-size: 12px"><i class="material-icons">
                                         <div id="tool-addCode" class="tool-app" data-title="toolBar_addCode" style="
                                             background-image: none;
@@ -661,7 +661,7 @@
                                 <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px">
                                     <div id="customShape" style="
                                         background-image: none;
@@ -714,7 +714,7 @@
                                 <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px">
                                     <!-- <div id="triangle"
                             style="background-image: none; position: absolute; margin-top: -10px; margin-left: -4px; height: 50px; border: none; background: transparent; box-shadow: none;"
@@ -820,7 +820,7 @@
                                 <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px">
                                     <div id="tool-addimage" class="tool-app" data-title="toolBar_addImage" style="
                                         background-image: none;
@@ -875,7 +875,7 @@
                                 </a>
 
                                 <a class="d-print-inline-block d-sm-inline d-md-inline d-lg-inline-block d-xl-inline-block d-xxl-inline-block custom-btn light-btn"
-                                    href="#" role="button" style="width: 60px;height: 34px;font-size: 12px;">
+                                      role="button" style="width: 60px;height: 34px;font-size: 12px;">
 
                                     <div id="tool-addVideo" class="tool-app" data-title="toolBar_addVideo" style="
                                         background-image: none;
@@ -906,7 +906,7 @@
                                     <a hidden class="reset">
                                     </a>
                                     <a class="rec d-print-inline-block d-sm-inline d-md-inline d-lg-inline-block d-xl-inline-block d-xxl-inline-block custom-btn light-btn"
-                                        href="#" role="button" style="width: 60px;height: 34px;font-size: 12px;"><svg
+                                          role="button" style="width: 60px;height: 34px;font-size: 12px;"><svg
                                             xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 512 512" width="1em"
                                             height="1em" fill="currentColor"
                                             style="font-size: 35px;width: 24px;height: 24px;margin-bottom: 5px;"
@@ -918,7 +918,7 @@
                                         </svg><br><span style="font-size: 10px; font-weight: bold;">녹음</span></a>
 
                                     <a class="stop d-print-inline-block d-sm-inline d-md-inline d-lg-inline-block d-xl-inline-block d-xxl-inline-block custom-btn light-btn"
-                                        href="#" role="button" style="width: 60px;height: 34px;font-size: 12px;"><svg
+                                          role="button" style="width: 60px;height: 34px;font-size: 12px;"><svg
                                             data-title="Stop Recording" data-intro='Stop Recording'
                                             class="bi bi-stop-circle" xmlns="http://www.w3.org/2000/svg" width="1em"
                                             height="1em" fill="currentColor" viewBox="0 0 16 16"
@@ -941,7 +941,7 @@
                                     <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-64
                                         0 512 512" width="1em" height="1em" fill="currentColor" style="
                                         font-size: 35px;
@@ -989,7 +989,7 @@
                                     <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0
                                         -64 640 640" width="1em" height="1em" fill="currentColor" style="
                                         font-size: 35px;
@@ -1048,7 +1048,7 @@
                                     <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-64
                                         0 512 512" width="1em" height="1em" fill="currentColor" style="
                                         font-size: 35px;
@@ -1081,7 +1081,7 @@
                                     <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                     fill="currentColor" viewBox="0 0 16
                                         16" class="bi bi-input-cursor" style="
@@ -1106,7 +1106,7 @@
                                     <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px">
                                         <div id="tool-screen" class="tool-app" data-title="toolBar_changeScale" style="
                                         background-image: none;
@@ -1155,7 +1155,7 @@
                                     <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="width: 60px; height: 34px; font-size:
+                                    custom-btn light-btn"   role="button" style="width: 60px; height: 34px; font-size:
                                     12px">
                                         <div style="position: absolute" id="tool-buttons">
                                             <div id="tool-play" class="tool-app" data-title="toolBar_preview" style="
@@ -1195,7 +1195,7 @@
                                     <!-- <a class="d-print-inline-block d-sm-inline
                                     d-md-inline d-lg-inline-block
                                     d-xl-inline-block d-xxl-inline-block
-                                    custom-btn light-btn" href="#" role="button" style="height: 35px; font-size: 12px">
+                                    custom-btn light-btn"   role="button" style="height: 35px; font-size: 12px">
                                         <div id="tool-addAnimation" class="tool-app ondetail"
                                             data-title="toolBar_setAnimation" style="
                                         background-image: none;

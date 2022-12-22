@@ -324,6 +324,7 @@ sentHtmlFileToServer: function (data) {
 		data: param_data,
 		type:'POST',
 		url: param_url,
+		cache: false,
 		beforeSend: function(){
 			$(iziToast.info({
 				// timeout:3000,

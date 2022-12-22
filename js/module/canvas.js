@@ -979,11 +979,11 @@ Core.registerModule("canvas", function (sb) {
 
             if(id !== null)
             {
-                content_url = new URL('https://www.ktitalk.com/uploads/' + id + '.html');
+                content_url = new URL('https://www.ktitalk.com/uploads/' + id + '.html' + '?' + Math.random());
             }
             else if(template_no !== null)
             {
-                content_url = new URL('https://www.ktitalk.com/uploads/templates/' + template_no + '.html');
+                content_url = new URL('https://www.ktitalk.com/uploads/templates/' + template_no + '.html'  + '?' + Math.random());
             }
 
             $.ajax({

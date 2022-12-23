@@ -393,6 +393,7 @@
                                                             url: 'https://www.ktitalk.com/uploads/templates/1.html' + '?' + Math.random(),
                                                             dataType: 'text',
                                                             success: function (data) {
+                                                                console.log('abdul load data'+data);
                                                                 var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
                                                                 if (datajson) {
                                                                     var data = datajson[0]
@@ -409,81 +410,6 @@
                                                         })};
                                                 </script>
                                                 말하기
-                                            </button>
-                                            <button class="dd2-content-btn" onclick="temp2();">
-                                                <script>
-                                                    function temp2(){
-                                                   $.ajax({
-                                                            type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/2.html' + '?' + Math.random(),
-                                                            dataType: 'text',
-                                                            success: function (data) {
-                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
-                                                                if (datajson) {
-                                                                    var data = datajson[0]
-                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
-                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
-                                                                        .replace(/^\<script[^\<\>]*\>/, '')
-                                                                        .replace(/\<\/script\>/, '');
-                                                                    global.renderSlider(data);
-                                                                }
-                                                            },
-                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                                                //alert("File Loading Not sucessfull");
-                                                            },
-                                                        })};
-                                                </script>
-                                                듣기
-                                            </button>
-                                            <button  class="dd2-content-btn" onclick="temp3();">
-                                                <script>
-                                                    function temp3(){
-                                                   $.ajax({
-                                                            type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/3.html' + '?' + Math.random(),
-                                                            dataType: 'text',
-                                                            success: function (data) {
-                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
-                                                                if (datajson) {
-                                                                    var data = datajson[0]
-                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
-                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
-                                                                        .replace(/^\<script[^\<\>]*\>/, '')
-                                                                        .replace(/\<\/script\>/, '');
-                                                                    global.renderSlider(data);
-                                                                }
-                                                            },
-                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                                                //alert("File Loading Not sucessfull");
-                                                            },
-                                                        })};
-                                                </script>
-                                                읽기
-                                            </button>
-                                            <button  class="dd2-content-btn" onclick="temp4();">
-                                                <script>
-                                                    function temp4(){
-                                                   $.ajax({
-                                                            type: 'GET',
-                                                            url: 'https://www.ktitalk.com/uploads/templates/4.html' + '?' + Math.random(),
-                                                            dataType: 'text',
-                                                            success: function (data) {
-                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
-                                                                if (datajson) {
-                                                                    var data = datajson[0]
-                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
-                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
-                                                                        .replace(/^\<script[^\<\>]*\>/, '')
-                                                                        .replace(/\<\/script\>/, '');
-                                                                    global.renderSlider(data);
-                                                                }
-                                                            },
-                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                                                //alert("File Loading Not sucessfull");
-                                                            },
-                                                        })};
-                                                </script>
-                                                쓰기
                                             </button>
                                             <button  class="dd2-content-btn" onclick="temp5();">
                                                 <script>
@@ -510,6 +436,32 @@
                                                 </script>
                                                 듣고 말하기
                                             </button>
+                                            <button class="dd2-content-btn" onclick="temp2();">
+                                                <script>
+                                                    function temp2(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/2.html' + '?' + Math.random(),
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                console.log('abdul load data'+data);
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                듣기
+                                            </button>
                                             <button  class="dd2-content-btn" onclick="temp6();">
                                                 <script>
                                                     function temp6(){
@@ -535,6 +487,32 @@
                                                 </script>
                                                 듣고 쓰기
                                             </button>
+                                            <button  class="dd2-content-btn" onclick="temp3();">
+                                                <script>
+                                                    function temp3(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/3.html' + '?' + Math.random(),
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                console.log('abdul load data'+data);
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                읽기
+                                            </button>
                                             <button  class="dd2-content-btn" onclick="temp7();">
                                                 <script>
                                                     function temp7(){
@@ -558,7 +536,32 @@
                                                             },
                                                         })};
                                                 </script>
-                                                읽고 쓰기
+                                                읽고 말하기
+                                            </button>
+                                            <button  class="dd2-content-btn" onclick="temp4();">
+                                                <script>
+                                                    function temp4(){
+                                                   $.ajax({
+                                                            type: 'GET',
+                                                            url: 'https://www.ktitalk.com/uploads/templates/4.html' + '?' + Math.random(),
+                                                            dataType: 'text',
+                                                            success: function (data) {
+                                                                var datajson = data.match(/\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>.*\<\!\-\-\[DATA_JSON_END\]\-\-\>/);
+                                                                if (datajson) {
+                                                                    var data = datajson[0]
+                                                                        .replace(/^\<\!\-\-\[DATA_JSON_BEGIN\]\-\-\>/, '')
+                                                                        .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/, '')
+                                                                        .replace(/^\<script[^\<\>]*\>/, '')
+                                                                        .replace(/\<\/script\>/, '');
+                                                                    global.renderSlider(data);
+                                                                }
+                                                            },
+                                                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                //alert("File Loading Not sucessfull");
+                                                            },
+                                                        })};
+                                                </script>
+                                                쓰기
                                             </button>
                                             <button  class="dd2-content-btn" onclick="temp8();">
                                                 <script>
@@ -583,13 +586,8 @@
                                                             },
                                                         })};
                                                 </script>
-                                                읽고 말하기
-
-
+                                                읽고 쓰기
                                                 <!-- AJAX REQUESTS FOR METHOD:GET TEMPLATES (END) -->
-
-
-
                                             </button>
                                         </div>
                                     </div>

@@ -1,16 +1,16 @@
 define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
 	// setTimeout(function () {
-    // 	window.altbox.start();
+    	window.altbox.start();
     // }, 0);
-	// if (!bowser.chrome) {
-	// 	var body = document.body;
-	// 	body.style.backgroundColor = 'black';
-	// 	body.style.overflow = 'hidden';
-	// 	var mask = document.getElementById('mask');
-	// 	mask.className = '';
-	// 	mask.style.height =  document.documentElement.clientHeight + 'px';
-	// } 
-	// else {
+	if (!bowser.chrome) {
+		var body = document.body;
+		body.style.backgroundColor = 'black';
+		body.style.overflow = 'hidden';
+		var mask = document.getElementById('mask');
+		mask.className = '';
+		mask.style.height =  document.documentElement.clientHeight + 'px';
+	} 
+	else {
 		$('#appContainer').removeClass('dp-none');
 	    
 	    // $(window).on('resize', function () {
@@ -19,5 +19,5 @@ define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
 	    Core.startAll();
 
 	    // $('#appContainer').height(document.height);
-	// }
+	}
 });

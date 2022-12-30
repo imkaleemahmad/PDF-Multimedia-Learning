@@ -11,15 +11,15 @@ const snackbar = () => {
 navigator.permissions.query({ name: 'microphone' }).then(function(result) {
     // console.log(result)
     if (result.state == 'granted') {
-        devicesStatus.innerHTML = 'Devices Access Granted.';
+        // devicesStatus.innerHTML = 'Devices Access Granted.';
         // Clear after 10s
         snackbar();
     } else if (result.state == 'prompt') {
-        devicesStatus.innerHTML = 'Accept Access devices access request.';
+        // devicesStatus.innerHTML = 'Accept Access devices access request.';
         // Clear after 10s
         snackbar();
     } else if (result.state == 'denied') {
-        devicesStatus.innerHTML = 'Please Enable Microphone Device.';
+        // devicesStatus.innerHTML = 'Please Enable Microphone Device.';
         // Clear after 10s
         snackbar();
     }

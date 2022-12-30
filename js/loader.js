@@ -4,7 +4,7 @@ define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
     // }, 0);
 	if (!bowser.chrome) {
 		var body = document.body;
-		body.style.backgroundColor = 'black';
+		body.style.backgroundColor = '#F1F2F6';
 		body.style.overflow = 'hidden';
 		var mask = document.getElementById('mask');
 		mask.className = '';

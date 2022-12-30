@@ -296,7 +296,7 @@ var localConfig = {
 			notice_openMenu : "Click right-button to open operate menu",
 			notice_confirm : 'Save edits',
 			browser_LieBao : 'LieBao browser',
-			browser_chrome : 'chrome browser',
+			browser_chrome : 'Chrome browser',
 			browser_360 : '360 chrome browser',
 			browser_notice : 'Please use chrome browser for you best experience ',
 
